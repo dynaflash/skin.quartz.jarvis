@@ -1436,7 +1436,7 @@
         <texturenofocus>-</texturenofocus>
         <alttexturenofocus>-</alttexturenofocus>
         <texturefocus border="9">img/MediaButton2.png</texturefocus>
-        <alttexturefocus border="9">img/MediaButton2.png</alttexturefocus>        <!--<texturefocus border="4">img/SettingsButtonFO.png</texturefocus>        <alttexturefocus border="4">img/SettingsButtonFO.png</alttexturefocus>-->
+        <alttexturefocus border="9">img/MediaButton2.png</alttexturefocus>
     </include>
     <include name="9000Commons" description="Regular BG">
         <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus()</visible>
