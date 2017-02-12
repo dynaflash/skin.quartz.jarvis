@@ -73,7 +73,7 @@
                                 <height>51</height>
                                 <width>51</width>
                                 <aspectratio>keep</aspectratio>
-                                <texture>overlay/UnwatchedNib.png</texture>
+                                <texture>overlay/unwatched.png</texture>
                                 <colordiffuse>Overlay</colordiffuse>
                             </control>
                             <control type="label" description="Label2">
@@ -124,7 +124,7 @@
                                 <height>51</height>
                                 <width>51</width>
                                 <aspectratio>keep</aspectratio>
-                                <texture>overlay/UnwatchedNib.png</texture>
+                                <texture>overlay/unwatched.png</texture>
                                 <colordiffuse>Overlay</colordiffuse>
                             </control>
                             <control type="label" description="Label2">

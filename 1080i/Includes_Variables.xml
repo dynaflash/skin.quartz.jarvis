@@ -48,12 +48,12 @@
         <value>$LOCALIZE[305]</value>
     </variable>
     <variable name="Overlay" description="Overlay image">
-        <value condition="ListItem.IsResumable">$INFO[ListItem.Overlay,overlay/]</value>
-        <value>$INFO[ListItem.Overlay]</value>
+        <value condition="ListItem.IsResumable">$INFO[ListItem.Overlay,overlay/inprogress/]</value>
+        <value>$INFO[ListItem.Overlay,overlay/unwatched/]</value>
     </variable>
     <variable name="PVROverlay" description="PVR Overlay image">
-        <value condition="ListItem.IsRecording">OverlayRecording.png</value>
-        <value condition="ListItem.HasTimer">OverlayTimer.png</value>
+        <value condition="ListItem.IsRecording">overlay/pvr/OverlayRecording.png</value>
+        <value condition="ListItem.HasTimer">overlay/pvr/OverlayTimer.png</value>
     </variable>
     <variable name="WeatherFooter" description="Weather plus footer labels">
         <value condition="IsEmpty(Window.Property(Weather.CurrentView))">$LOCALIZE[31904]</value>
