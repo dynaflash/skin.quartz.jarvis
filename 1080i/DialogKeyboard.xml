@@ -7,8 +7,8 @@
             <control type="image">
                 <centerleft>50%</centerleft>
                 <centertop>50%</centertop>
-                <width>1131</width>
-                <height>604</height>
+                <width>1147</width>
+                <height>620</height>
                 <texture>texture/dialog.png</texture>
                 <bordertexture border="22">texture/dialog_border.png</bordertexture>
                 <bordersize>22</bordersize>
@@ -29,7 +29,7 @@
                 <control type="group">
                     <width>1073</width>
                     <height>600</height>
-                    <top>80</top>
+                    <top>85</top>
                     <control type="group">
                         <description>Text field</description>
                         <control type="image">
