@@ -10,8 +10,8 @@
     </include>
     <include name="PlayingInfo">
         <control type="label" description="Playing label">
-        <posx>94</posx>
-        <posy>-15</posy>
+            <posx>94</posx>
+            <posy>-15</posy>
             <height>45</height>
             <width>750</width>
             <label>$LOCALIZE[31023]:</label>
