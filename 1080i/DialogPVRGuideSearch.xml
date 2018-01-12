@@ -7,6 +7,7 @@
     <include>OpenClose</include>
     <controls>
         <include>MiniBackground</include>
+        
         <control type="group">
             <posx>315</posx>
             <posy>-45</posy>

@@ -2,6 +2,8 @@
 <window>
     <onload condition="system.hasaddon(script.artistslideshow)">RunScript(script.artistslideshow)</onload>
     <controls>
+        <include>FullBackground</include>
+        <include>MediaHeader</include>
         <control type="group">
             <control type="visualisation" id="2" description="Visualisation">
                 <posx>0</posx>
@@ -137,12 +139,12 @@
                                 <font>size17</font>
                                 <textcolor>Grey2</textcolor>
                             </control>
-                            <control type="progress" description="Progress Bar">
+                            <control type="progress" id="23" description="Progress Bar">
                                 <posx>122</posx>
                                 <posy>3</posy>
                                 <width>675</width>
-                                <height>24</height>
-                                <texturebg>Controls/ProgressBackground.png</texturebg>
+                                <height>14</height>
+                                <!--<texturebg>Controls/ProgressBackground.png</texturebg>-->
                                 <info>Player.Progress</info>
                             </control>
                             <control type="label">

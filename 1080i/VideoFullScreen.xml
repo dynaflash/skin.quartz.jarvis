@@ -21,7 +21,7 @@
                 <posx>0</posx>
                 <posy>225</posy>
                 <width>1920</width>
-                <height>177</height>
+                <height>177</height> <!-- Current Height is 177 (seems low) -->
                 <texture>img/BlackDotST.png</texture>
             </control>
             <control type="label" id="10" description="row 1 sys label">

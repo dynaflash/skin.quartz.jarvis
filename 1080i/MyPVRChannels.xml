@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">50</defaultcontrol>
+	<!--  -->
+    <views>50</views>
+
+    <controls>
+        <include>FullBackground</include>
+        <include>MediaHeader</include>
+
+        <control type="group" description="Content">
+
+            <include>OpenClose</include>
+            <visible>!Window.IsActive(DialogVideoInfo.xml)</visible>
+            <animation effect="fade" delay="100" time="300">Visible</animation>
+            <animation effect="fade" time="0">Hidden</animation>
+
+            <!-- Left side with video preview and chosen list information -->
+            <control type="group" description="Left Panel TV Channels group">
+                <visible>Control.IsVisible(50)</visible>
+                <include>VisibleFadeEffect</include>
+                <control type="group">
+                    <posx>112</posx>
+                    <posy>120</posy>
+                    <!-- Can use default tv background image instead of thumbs -->
+                    <control type="image" description="ChannelLogo">
+                        <visible>!Player.HasVideo | !VideoPlayer.Content(LiveTV)</visible>
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>640</width>
+                        <height>360</height>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <texture fallback="special://skin/backgrounds/tv.jpg">$INFO[ListItem.Thumb]</texture>
+                        <aspectratio>keep</aspectratio>
+                        <include>VisibleFadeEffect</include>
+                    </control>
+                    <control type="videowindow">
+                        <visible>VideoPlayer.Content(LiveTV)</visible>
+                        <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>640</width>
+                        <height>360</height>
+                    </control>
+                    <control type="image" description="Current video label background">
+                        <visible>VideoPlayer.Content(LiveTV)</visible>
+                        <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+                        <left>0</left>
+                        <top>280</top>
+                        <width>640</width>
+                        <height>40</height>
+                        <texture>img/BlackDot.png</texture>
+                        <colordiffuse>DDFFFFFF</colordiffuse>
+                    </control>
+                    <control type="textbox" description="Current video label">
+                        <visible>VideoPlayer.Content(LiveTV)</visible>
+                        <animation effect="fade" tween="cubic" easing="inout" time="2400">Visible</animation>
+                        <left>0</left>
+                        <top>280</top>
+                        <width>640</width>
+                        <height>40</height>
+                        <font>Details</font>
+                        <align>center</align>
+                        <textcolor>White</textcolor>
+                        <autoscroll delay="3000" time="3000" repeat="3000">true</autoscroll>
+                        <label>$INFO[VideoPlayer.ChannelNumberLabel,, ] $INFO[VideoPlayer.ChannelName,, ] $INFO[Player.Title]</label>
+                    </control>
+                </control>
+
+
+                <control type="group">
+                    <posx>112</posx>
+                    <posy>540</posy>
+                    <control type="label" description="Title above progress">
+                        <posy>0</posy>
+                        <width>762</width>
+                        <font>size22B</font>
+                        <textcolor>HL</textcolor>
+                        <label>$INFO[ListItem.ChannelNumberLabel,, ] $INFO[ListItem.ChannelName,,: ]$INFO[ListItem.Title]</label>
+                    </control>
+
+                    <control type="progress">
+                        <posx>0</posx>
+                        <posy>80</posy>
+                        <width>760</width>
+                        <height>4</height>
+
+                        <!-- Test some progress bars Notes Here:
+                        <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
+                        <midtexture border="0,0,0,0">VideoOSD/BufferMidd.png</midtexture>
+
+                        ProgressLeft.png
+                        ProgressRight.png
+                    -->
+                    <!-- Some textures from the video osd
+
+                    VideoProgressBG.png
+                    VideoOSD/BufferMidd.png
+                    VideoOSD/VideoProgressBG.png
+                    VideoOSD/ProgressRealBG.png
+                    VideoOSD/VideoProgressMidd.png
+                    VideoOSD/VideoProgressLeft.png
+                    VideoOSD/VideoProgressFill.png
+                    HUD/ProgressBackground.png
+                    controls/ProgressBackground.png
+                    controls/Slider.png
+                    controls/ProgressMid.png
+
+
+                    <texturebg>img/ItemBG.png</texturebg>
+                    <midtexture>img/ItemBG2.png</midtexture>
+                    img/BlackDot.png
+                    <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
+                    <midtexture border="0,0,0,0">VideoOSD/BufferMidd.png</midtexture>
+
+                    -->
+                    <!--<aspectratio>stretch</aspectratio>-->
+                    <reveal>false</reveal>
+                        <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
+                        <lefttexture border="0,0,0,0">img/WhiteDot.png</lefttexture>
+                        <midtexture border="0,0,0,0">img/WhiteDot.png</midtexture>
+                        <righttexture border="0,0,0,0">img/WhiteDot.png</righttexture>
+                        <colordiffuse>HL</colordiffuse>
+                        <info>ListItem.Progress</info>
+                    </control>
+
+                    <control type="textbox" description="Plot Value for TV">
+                        <posx>0</posx>
+                        <posy>100</posy>
+                        <width>758</width>
+                        <height>240</height>
+                        <font>size20</font>
+                        <textcolor>White</textcolor>
+                        <align>justify</align>
+                        <aligny>bottom</aligny>
+                        <autoscroll delay="8000" time="4300" repeat="10000">true</autoscroll>
+                        <pagecontrol>-</pagecontrol>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                    <control type="label">
+                        <visible>ListItem.HasEpg</visible>
+                        <posy>370</posy>
+                        <textcolor>White</textcolor>
+                        <include>Genre51Commons</include>
+                        <label>$LOCALIZE[142] $INFO[ListItem.StartTime,, / ]$INFO[ListItem.EndTime]</label>
+                    </control>
+                    <control type="label">
+                        <posy>420</posy>
+                        <include>Genre51Commons</include>
+                        <label>Up $LOCALIZE[19031]: [COLOR=White]$INFO[ListItem.NextTitle][/COLOR]</label>
+                    </control>
+                </control>
+
+                <!-- List Slider on the right -->
+                <control type="group" description="Slider and List">
+                    <include>LargeListItemCount</include>
+                    <posx>1020</posx>
+                    <posy>141</posy>
+                    <control type="fixedlist" id="50" description="Channel List">
+                        <posx>0</posx>
+                        <posy>0</posy>
+                        <width>802</width>
+                        <height>888</height>
+                        <onleft condition="!Skin.HasSetting(ViewOptions_Hide)">9000</onleft>
+                        <onright condition="Skin.HasSetting(Scrollbars_Active)">70</onright>
+                        <onright condition="!Skin.HasSetting(Scrollbars_Active)">9000</onright>
+                        <onup>50</onup>
+                        <ondown>50</ondown>
+                        <pagecontrol>70</pagecontrol>
+                        <viewtype label="537">Big List 11</viewtype>
+                        <focusposition>3</focusposition>
+                        <movement>4</movement>
+                        <itemlayout width="802" height="111">
+
+                            <control type="progress">
+                                <posx>16</posx>
+                                <posy>96</posy>
+                                <width>760</width>
+                                <height>4</height>
+                                <reveal>false</reveal>
+                                <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
+                                <lefttexture border="0,0,0,0" colordiffuse="HL">img/WhiteDot.png</lefttexture>
+                                <midtexture border="0,0,0,0"  colordiffuse="HL">img/WhiteDot.png</midtexture>
+                                <righttexture border="0,0,0,0" colordiffuse="HL">img/WhiteDot.png</righttexture>
+                                <colordiffuse>HL</colordiffuse>
+                                <info>ListItem.Progress</info>
+                            </control>
+
+                            <control type="label" description="Channel Number">
+                                <posx>0</posx>
+                                <posy>9</posy>
+                                <height>80</height>
+                                <width>100</width>
+                                <textcolor>White</textcolor>
+                                <align>center</align>
+                                <aligny>center</aligny>
+                                <include>51MainLabel</include>
+                                <scroll>false</scroll>
+                                <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                            </control>
+                            <control type="image" description="Logo">
+                                <posx>105</posx>
+                                <posy>8</posy>
+                                <height>80</height>
+                                <width>100</width>
+                                <align>center</align>
+                                <aligny>center</aligny>
+                                <texture>$INFO[ListItem.Thumb]</texture>
+                                <aspectratio>keep</aspectratio>
+                            </control>
+
+                            <control type="label" description="Main Label">
+                                <posx>220</posx>
+                                <posy>4</posy>
+                                <width>552</width>
+                                <aligny>top</aligny>
+                                <include>51MainLabel</include>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="label" description="Label2">
+                                <posx>220</posx>
+                                <posy>55</posy>
+                                <width>552</width>
+                                <include>51Label2</include>
+                                <label>$INFO[ListItem.Title]</label>
+                            </control>
+
+                            <control type="image">
+                                <posx>90</posx>
+                                <posy>0</posy>
+                                <width>18</width>
+                                <height>111</height>
+                                <texture>OverlayRecording.png</texture>
+                                <aspectratio>keep</aspectratio>
+                                <visible>ListItem.IsRecording</visible>
+                            </control>
+                        </itemlayout>
+
+                        <focusedlayout width="802" height="111">
+                            <control type="progress">
+                                <!-- Directly from TVProgress include -->
+                                <posx>16</posx>
+                                <posy>96</posy>
+                                <width>760</width>
+                                <height>4</height><!-- was 103 -->
+                                <reveal>false</reveal>
+                                <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
+                                <lefttexture border="0,0,0,0">img/WhiteDot.png</lefttexture>
+                                <midtexture border="0,0,0,0">img/WhiteDot.png</midtexture>
+                                <righttexture border="0,0,0,0">img/WhiteDot.png</righttexture>
+                                <colordiffuse>HL</colordiffuse>
+                                <info>ListItem.Progress</info>
+                            </control>
+
+                        <control type="label" description="Channel Number">
+                            <posx>0</posx>
+                            <posy>9</posy>
+                            <height>80</height>
+                            <width>100</width>
+                            <textcolor>White</textcolor>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <include>51MainLabelFO</include>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                        </control>
+                        <control type="image" description="Logo">
+                            <posx>105</posx><!-- 705 -->
+                            <posy>8</posy>
+                            <height>80</height>
+                            <width>100</width>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <aspectratio>keep</aspectratio>
+                        </control>
+                        <control type="label" description="Main Label">
+                            <posx>220</posx>
+                            <posy>4</posy>
+                            <width>552</width>
+                            <include>51MainLabelFO</include>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="label" description="Label2">
+                            <posx>220</posx>
+                            <posy>55</posy>
+                            <width>552</width>
+                            <include>51Label2FO</include>
+                            <label>$INFO[ListItem.Title]</label>
+                        </control>
+                        <control type="image">
+                            <posx>90</posx>
+                            <posy>0</posy>
+                            <width>18</width>
+                            <height>111</height>
+                            <texture>OverlayRecording.png</texture>
+                            <aspectratio>keep</aspectratio>
+                            <visible>ListItem.IsRecording</visible>
+                        </control>
+                    </focusedlayout>
+                </control>
+
+                <include>LargeListSlider</include>
+
+            </control>
+
+            <control type="scrollbar" id="70">
+                <posx>39r</posx>
+                <posy>135</posy>
+                <height>870</height>
+                <onleft>50</onleft>
+                <onright>32</onright>
+            </control>
+
+        </control>
+
+    </control>
+
+    <control type="image">
+        <visible>Control.HasFocus(9001)</visible>
+        <centerleft>1400</centerleft>
+        <centertop>540</centertop>
+        <width>244</width>
+        <height>254</height>
+        <texture>texture/dialog.png</texture>
+        <bordertexture border="22">texture/dialog_border.png</bordertexture>
+        <bordersize>22</bordersize>
+    </control>
+    <control type="button" id="9001">
+        <visible allowhiddenfocus="true">Control.HasFocus(9001)</visible>
+        <centerleft>1400</centerleft>
+        <centertop>540</centertop>
+        <width>200</width>
+        <height>210</height>
+        <texturenofocus>-</texturenofocus>
+        <texturefocus>texture/ScrollVertical.png</texturefocus>
+        <label>$INFO[ListItem.SortLetter]</label>
+        <font>Scroll</font>
+        <onleft>50</onleft>
+        <onright>50</onright>
+        <onup>PageUp(60)</onup>
+        <ondown>PageDown(60)</ondown>
+        <onclick>Control.SetFocus(50)</onclick>
+        <onback>Control.SetFocus(50)</onback>
+        <align>center</align>
+    </control>
+    <control type="image">
+        <visible>Control.HasFocus(9002)</visible>
+        <centerleft>960</centerleft>
+        <centertop>750</centertop>
+        <width>254</width>
+        <height>244</height>
+        <texture>texture/dialog.png</texture>
+        <bordertexture border="22">texture/dialog_border.png</bordertexture>
+        <bordersize>22</bordersize>
+    </control>
+    <control type="button" id="9002">
+        <visible allowhiddenfocus="true">Control.HasFocus(9002)</visible>
+        <centerleft>960</centerleft>
+        <centertop>750</centertop>
+        <width>200</width>
+        <height>210</height>
+        <texturenofocus>-</texturenofocus>
+        <texturefocus border="12">texture/ScrollHorizontal.png</texturefocus>
+        <label>$INFO[ListItem.SortLetter]</label>
+        <font>Scroll</font>
+        <onup>50</onup>
+        <ondown>50</ondown>
+        <onleft>PageUp(60)</onleft>
+        <onright>PageDown(60)</onright>
+        <onclick>Control.SetFocus(50)</onclick>
+        <onback>Control.SetFocus(50)</onback>
+        <align>center</align>
+    </control>
+    <control type="image">
+        <visible>Control.HasFocus(9003)</visible>
+        <centerleft>50%</centerleft>
+        <centertop>50%</centertop>
+        <width>254</width>
+        <height>244</height>
+        <texture>texture/dialog.png</texture>
+        <bordertexture border="22">texture/dialog_border.png</bordertexture>
+        <bordersize>22</bordersize>
+    </control>
+    <control type="button" id="9003">
+        <visible allowhiddenfocus="true">Control.HasFocus(9003)</visible>
+        <centerleft>50%</centerleft>
+        <centertop>50%</centertop>
+        <width>210</width>
+        <height>200</height>
+        <texturenofocus>-</texturenofocus>
+        <texturefocus>texture/ScrollHorizontal.png</texturefocus>
+        <label>$INFO[ListItem.SortLetter]</label>
+        <font>Scroll</font>
+        <onup>50</onup>
+        <ondown>50</ondown>
+        <onleft>PageUp(60)</onleft>
+        <onright>PageDown(60)</onright>
+        <onclick>Control.SetFocus(50)</onclick>
+        <onback>Control.SetFocus(50)</onback>
+        <align>center</align>
+    </control>
+    <control type="scrollbar" id="70">
+        <posx>-500</posx>
+        <posy>147</posy>
+        <height>882</height>
+        <onleft>50</onleft>
+        <onright>noop</onright>
+    </control>
+
+    <!-- End Show channel list on right	-->
+    <control type="group" description="Side menu 9000 group">
+        <visible allowhiddenfocus="true">ControlGroup(9000).HasFocus()</visible>
+        <include>DialogOpenCloseVisible</include>
+        <control type="image">
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>598</width>
+            <height>703</height>
+            <texture>texture/dialog.png</texture>
+            <bordertexture border="22">texture/dialog_border.png</bordertexture>
+            <bordersize>22</bordersize>
+        </control>
+        <control type="grouplist" id="9000">
+            <include>9000GrouplistParameters</include>
+            <control type="button" id="2" description="Views">
+                <texturenofocus>-</texturenofocus>
+                <include>9000Buttons</include>
+            </control>
+            <control type="togglebutton" id="14" description="Toggle Watched">
+                <include>9000Buttons</include>
+                <label>$LOCALIZE[535]: $LOCALIZE[16100]</label>
+                <altlabel>$LOCALIZE[535]: $LOCALIZE[16101]</altlabel>
+            </control>
+            <control type="button" id="3" description="Sort">
+                <include>9000Buttons</include>
+            </control>
+            <control type="togglebutton" id="4" description="Ordering">
+                <include>9000Buttons</include>
+                <label>$LOCALIZE[21429]: $LOCALIZE[21430]</label>
+                <altlabel>$LOCALIZE[21429]: $LOCALIZE[21431]</altlabel>
+            </control>
+
+
+            <control type="togglebutton" id="699" description="Playing">
+                <enable>Player.HasMedia</enable>
+                <include>9000Buttons</include>
+                <label>$LOCALIZE[16003]</label>
+                <altlabel>$LOCALIZE[31977]</altlabel>
+                <usealttexture>Player.HasMedia</usealttexture>
+                <onclick>fullscreen</onclick>
+                <altclick>fullscreen</altclick>
+                <animation effect="fade" start="100" end="60" time="100" condition="!Player.HasMedia">Conditional</animation>
+            </control>
+        </control>
+    </control>
+</controls>
+</window>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">10</defaultcontrol>
+    <onload>SetProperty(Window.HasSettings,True,home)</onload>
+	<onload>ClearProperty(MediaMenu,Home)</onload>
+	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
+    <allowoverlay>no</allowoverlay>
+	<views>10,11,12,13</views>
+	<menucontrol>9051</menucontrol>
+	<controls>
+        <include>FullBackground</include>
+        <include>MediaHeader</include>
+
+		<control type="group" id="50">
+			<include>OpenClose</include>
+
+		</control>
+		<control type="group" description="EPG Timeline Info">
+			<visible>Control.IsVisible(10)</visible>
+			<include>VisibleFadeEffect</include>
+            <include>EPGTimelineView</include>
+            <control type="group" description="Top Icon / Playing block">
+                <posx>98</posx>
+                <posy>5</posy>
+<!-- We are playing live tv so show currently playing here -->
+                <control type="videowindow">
+                    <visible>VideoPlayer.Content(LiveTV)</visible>
+                    <width>360</width>
+                    <height>240</height>
+                </control>
+                <control type="image" description="Current video label background">
+                    <visible>VideoPlayer.Content(LiveTV)</visible>
+                    <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+                    <left>0</left>
+                    <top>160</top>
+                    <width>360</width>
+                    <height>40</height>
+                    <texture>img/BlackDot.png</texture>
+                    <colordiffuse>DDFFFFFF</colordiffuse>
+                </control>
+                <control type="textbox" description="Current video label">
+                    <visible>VideoPlayer.Content(LiveTV)</visible>
+                    <animation effect="fade" tween="cubic" easing="inout" time="2400">Visible</animation>
+                    <left>0</left>
+                    <top>160</top>
+                    <width>360</width>
+                    <height>40</height>
+                    <font>Details</font>
+                    <align>center</align>
+                    <textcolor>White</textcolor>
+                    <autoscroll delay="3000" time="3000" repeat="3000">true</autoscroll>
+                    <label>$INFO[VideoPlayer.ChannelNumberLabel,, ] $INFO[Player.Title]</label>
+                </control>
+                <!-- Not playing live tv: show focused channel Icon -->
+                <control type="image" description="TV Logo">
+                    <visible>!VideoPlayer.Content(LiveTV)</visible>
+                    <posx>100</posx>
+                    <posy>20</posy>
+                    <align>center</align>
+                    <aligny>top</aligny>
+                    <width>240</width>
+                    <height>200</height>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+            </control>
+			<control type="group">
+				<posx>490</posx>
+				<posy>20</posy>
+				<control type="label">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1000</width>
+					<height>40</height>
+					<aligny>center</aligny>
+					<align>left</align>
+					<scroll>false</scroll>
+					<label>[COLOR=HL]$INFO[ListItem.Label][/COLOR]$INFO[ListItem.Genre,  -  ,  -]  [COLOR=Grey]$INFO[ListItem.StartTime,( ,  -  ]$INFO[ListItem.EndTime,, )][/COLOR]</label>
+				</control>
+				<control type="textbox">
+					<posx>0</posx>
+					<posy>50</posy>
+					<width>1000</width>
+					<height>160</height>
+                    <font>size20</font>
+					<align>justify</align>
+					<autoscroll delay="12000" time="3000" repeat="10000">true</autoscroll>
+					<label>$INFO[ListItem.Plot]</label>
+				</control>
+			</control>
+		</control>
+		<!--<include>PVRSideBlade</include>-->
+	</controls>
+</window>

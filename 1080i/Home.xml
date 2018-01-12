@@ -11,6 +11,10 @@
                 <onfocus>Control.SetFocus(9000)</onfocus>
                 <onclick>Control.SetFocus(9000)</onclick>
             </control>
+            <!-- Start Top Window Now Playing -->
+            <include>MiniPlayer_Home</include>
+            <!-- END Top Window Now Playing -->
+
             <control type="group" description="Furniture">
                 <control type="image" description="Navbar">
                     <posx>-90</posx>
@@ -21,6 +25,7 @@
                     <texture>img/HomeMenuBar.png</texture>
                 </control>
             </control>
+            <!--
             <control type="grouplist" description="Sliders">
                 <visible>!Control.HasFocus(311) + !Control.HasFocus(312) + !Control.HasFocus(313) + !Control.HasFocus(314) + !Control.HasFocus(315)</visible>
                 <posx>0</posx>
@@ -37,22 +42,28 @@
                 <include>Slider304</include>
                 <include>Slider305</include>
                 <include>Slider306</include>
+                <include>Slider307</include>
             </control>
+        -->
             <control type="grouplist" id="9000" description="Submenus">
                 <posx>0</posx>
-                <posy>585</posy>
+                <posy>585</posy><!-- stock 585 -->
                 <itemgap>0</itemgap>
                 <width max="1920">auto</width>
                 <height>420</height>
                 <align>center</align>
                 <aligny>top</aligny>
-                <onup>700</onup>
+                <onup condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onup>
+                <!-- If nothing in shelf, go to mini player on up -->
+                <onup>599</onup>
+                <onup>602</onup>
                 <orientation>horizontal</orientation>
                 <control type="list" id="301" description="Movies">
                     <visible>!Skin.HasSetting(MoviesSectionHide)</visible>
                     <onleft>306</onleft>
                     <onright>302</onright>
-                    <onup>311</onup>
+                    <onup condition="Control.IsVisible(311)">311</onup>
+                    <onup>599</onup>
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <focusposition>3</focusposition>
@@ -123,6 +134,16 @@
                             <onclick>ActivateWindow(VideoLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
                         </item>
+                        <item id="10" description="Update library">
+                            <visible>Library.HasContent(Video)</visible>
+                            <label>653</label>
+                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">UpdateLibrary(Video)</onclick>
+                        </item>
+                        <item id="11" description="Clean library">
+                            <visible>Library.HasContent(Video)</visible>
+                            <label>32001</label>
+                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">CleanLibrary(Video)</onclick>
+                        </item>
                     </content>
                     <include>Animation301</include>
                 </control>
@@ -130,7 +151,8 @@
                     <visible>!Skin.HasSetting(TVSectionHide)</visible>
                     <onleft>301</onleft>
                     <onright>303</onright>
-                    <onup>312</onup>
+                    <onup condition="Control.IsVisible(312)">312</onup>
+                    <onup>599</onup>
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <content>
@@ -199,6 +221,16 @@
                             <onclick>ActivateWindow(VideoLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
                         </item>
+                        <item id="10" description="Update library">
+                            <visible>Library.HasContent(Video)</visible>
+                            <label>653</label>
+                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">UpdateLibrary(Video)</onclick>
+                        </item>
+                        <item id="11" description="Clean library">
+                            <visible>Library.HasContent(Video)</visible>
+                            <label>32001</label>
+                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">CleanLibrary(Video)</onclick>
+                        </item>
                     </content>
                     <include>Animation302</include>
                 </control>
@@ -206,7 +238,8 @@
                     <visible>!Skin.HasSetting(MusicSectionHide)</visible>
                     <onleft>302</onleft>
                     <onright>304</onright>
-                    <onup>313</onup>
+                    <onup condition="Control.IsVisible(313)">313</onup>
+                    <onup>599</onup>
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <content>
@@ -215,66 +248,91 @@
                             <label>133</label>
                             <onclick condition="Library.HasContent(Music)">ActivateWindow(MusicLibrary,Artists,return)</onclick>
                         </item>
-                        <item id="1" description="Music Videos">
+                        <item id="1" description="Albums">
+                            <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
+                            <label>Albums</label>
+                            <onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
+                        </item>
+                        <item id="2" description="Recently added">
+                            <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
+                            <label>$LOCALIZE[31020]</label>
+                            <onclick>ActivateWindow(Music,recentlyaddedalbums,return)</onclick>
+                        </item>
+                        <item id="3" description="Top 100">
+                            <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
+                            <label>$LOCALIZE[271]</label>
+                            <onclick>ActivateWindow(Music,top100,return)</onclick>
+                        </item>
+                        <item id="4" description="Music Videos">
                             <visible>!Skin.HasSetting(Music2) + Library.HasContent(MusicVideos)</visible>
                             <label>3</label>
                             <onclick>ActivateWindow(VideoLibrary,MusicVideos,return)</onclick>
                         </item>
-                        <item id="2" description="Library">
+                        <item id="5" description="Library">
                             <visible>!Skin.HasSetting(Music3) + Library.HasContent(Music)</visible>
                             <label>14022</label>
                             <onclick>ActivateWindow(MusicLibrary,root)</onclick>
                         </item>
-                        <item id="3" description="Files">
+                        <item id="6" description="Files">
                             <visible>!Skin.HasSetting(Music4)</visible>
                             <label>744</label>
                             <onclick>ActivateWindow(MusicFiles,root)</onclick>
                         </item>
-                        <item id="3" description="Party mode">
+                        <item id="7" description="Party mode">
                             <visible>!Skin.HasSetting(Music7) + Library.HasContent(music)</visible>
                             <label>589</label>
                             <onclick>PlayerControl(PartyMode(music))</onclick>
                         </item>
-                        <item id="3" description="Custom Music">
+                        <item id="8" description="Custom Music">
                             <visible>!IsEmpty(Skin.String(CustomMusic.1.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.1.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.1.Path)]</onclick>
                         </item>
-                        <item id="4" description="Shortcut2">
+                        <item id="9" description="Shortcut2">
                             <visible>!IsEmpty(Skin.String(CustomMusic.2.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.2.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.2.Path)]</onclick>
                         </item>
-                        <item id="5" description="Shortcut3">
+                        <item id="10" description="Shortcut3">
                             <visible>!IsEmpty(Skin.String(CustomMusic.3.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.3.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.3.Path)]</onclick>
                         </item>
-                        <item id="6" description="Shortcut4">
+                        <item id="11" description="Shortcut4">
                             <visible>!IsEmpty(Skin.String(CustomMusic.4.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.4.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.4.Path)]</onclick>
                         </item>
-                        <item id="7" description="Shortcut5">
+                        <item id="12" description="Shortcut5">
                             <visible>!IsEmpty(Skin.String(CustomMusic.5.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.5.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.5.Path)]</onclick>
                         </item>
-                        <item id="7" description="Shortcut6">
+                        <item id="13" description="Shortcut6">
                             <visible>!IsEmpty(Skin.String(CustomMusic.6.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.6.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.6.Path)]</onclick>
                         </item>
-                        <item id="7" description="Shortcut7">
+                        <item id="14" description="Shortcut7">
                             <visible>!IsEmpty(Skin.String(CustomMusic.7.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.7.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.7.Path)]</onclick>
                         </item>
-                        <item id="10" description="Search">
+                        <item id="15" description="Search">
                             <visible>!Skin.HasSetting(Music5) + [Library.HasContent(Music) | Library.HasContent(MusicVideos)]</visible>
                             <label>137</label>
                             <onclick>ActivateWindow(MusicLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
+                        </item>
+                        <item id="16" description="Update library">
+                            <visible>Library.HasContent(Music)</visible>
+                            <label>653</label>
+                            <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">UpdateLibrary(Music)</onclick>
+                        </item>
+                        <item id="17" description="Clean library">
+                            <visible>Library.HasContent(Video)</visible>
+                            <label>32001</label>
+                            <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">CleanLibrary(Music)</onclick>
                         </item>
                     </content>
                     <include>Animation303</include>
@@ -283,7 +341,8 @@
                     <visible>!Skin.HasSetting(PicturesSectionHide)</visible>
                     <onleft>303</onleft>
                     <onright>305</onright>
-                    <onup>314</onup>
+                    <onup condition="Control.IsVisible(314)">314</onup>
+                    <onup>599</onup>
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <content>
@@ -330,19 +389,53 @@
                     </content>
                     <include>Animation304</include>
                 </control>
+                <!-- Live TV -->
+                <control type="list" id="307" description="Live TV">
+                    <visible>System.GetBool(pvrmanager.enabled)</visible>
+                    <onleft>306</onleft>
+                    <onright>301</onright>
+                    <onup condition="Control.IsVisible(317)">317</onup><!-- Shelf focuseable content in id 700 -->
+                    <onup>599</onup>
+                    <ondown>307</ondown>
+                    <include>Sublist</include>
+                    <content>
+                        <item id="0" description="Now playing - Full Screen">
+                            <visible>VideoPlayer.Content(LiveTV)</visible>
+                            <label>31977</label>
+                            <onclick>fullscreen</onclick>
+                        </item>
+                        <item id="1" description="Channels">
+                            <visible>PVR.HasTVChannels</visible>
+                            <label>19019</label>
+                            <onclick>ActivateWindow(TVChannels)</onclick>
+                        </item>
+
+                        <item id="2" description="Guide">
+                            <label>$LOCALIZE[22020]</label>
+                            <onclick>ActivateWindow(TVGuide)</onclick>
+                        </item>
+                        <item id="3" description="TV Recordings">
+                            <label>19163</label>
+                            <onclick>ActivateWindow(TVRecordings)</onclick>
+                        </item>
+                        <item id="4" description="TV Timer">
+                            <label>19040</label>
+                            <onclick>ActivateWindow(TVTimers)</onclick>
+                        </item>
+
+                    </content>
+                    <include>Animation307</include>
+                </control>
+                <!-- End Live TV -->
                 <control type="list" id="305" description="Addons">
-                    <visible>!Skin.HasSetting(AddonsSectionHide) | System.GetBool(pvrmanager.enabled)</visible>
+                    <visible>!Skin.HasSetting(AddonsSectionHide)</visible>
                     <onleft>304</onleft>
                     <onright>306</onright>
-                    <onup>315</onup>
+                    <onup condition="Control.IsVisible(315)">315</onup>
+                    <onup>599</onup>
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <content>
-                        <item id="0" description="LiveTV">
-                            <visible>System.GetBool(pvrmanager.enabled)</visible>
-                            <label>31502</label>
-                            <onclick>XBMC.ActivateWindowAndFocus(PVR, 11,0)</onclick>
-                        </item>
                         <item id="1" description="Weather">
                             <visible>!Skin.HasSetting(Addons1)</visible>
                             <label>8</label>
@@ -408,28 +501,29 @@
                     </content>
                     <include>Animation305</include>
                 </control>
-                <control type="list" id="306" description="XBMC">
+                <control type="list" id="306" description="System">
                     <onleft>305</onleft>
-                    <onright>301</onright>
+                    <onright>307</onright>
                     <ondown>306</ondown>
                     <include>Sublist</include>
                     <content>
-                        <item id="0" description="Update library">
+						<!-- Now Playing should be for both video and audio -->
+                        <item id="0" description="Now playing">
+                            <visible>Player.HasMedia</visible>
+                            <label>31977</label>
+                            <onclick>fullscreen</onclick>
+                        </item>
+						<item id="1" description="Update library">
                             <visible>!Skin.HasSetting(XBMC0)</visible>
                             <label>653</label>
                             <onclick>UpdateLibrary(Video)</onclick>
                             <onclick condition="Library.HasContent(Music)">UpdateLibrary(Music)</onclick>
                         </item>
-                        <item id="1" description="Clean library">
+                        <item id="2" description="Clean library">
                             <visible>!Skin.HasSetting(XBMC1)</visible>
                             <label>32001</label>
                             <onclick>CleanLibrary(Video)</onclick>
                             <onclick condition="Library.HasContent(Music)">CleanLibrary(Music)</onclick>
-                        </item>
-                        <item id="2" description="Now playing Video">
-                            <visible>Player.HasMedia</visible>
-                            <label>31977</label>
-                            <onclick>fullscreen</onclick>
                         </item>
                         <item id="3" description="Settings">
                             <visible>!Skin.HasSetting(HideSettings)</visible>
@@ -479,39 +573,53 @@
                             <label fallback="13009">$VAR[QuitLabel2]</label>
                             <onclick>XBMC.quit()</onclick>
                         </item>
-                        <item id="12" description="Quit">
+                        <item id="12" description="Power off">
                             <visible>!Skin.HasSetting(XBMC5) + StringCompare(Skin.String(shutdown),powerdown)</visible>
                             <label fallback="13009">$VAR[QuitLabel2]</label>
                             <onclick>XBMC.powerdown()</onclick>
                         </item>
-                        <item id="13" description="Quit">
+                        <item id="13" description="Hibernate">
                             <visible>!Skin.HasSetting(XBMC5) + StringCompare(Skin.String(shutdown),hibernate)</visible>
                             <label fallback="13009">$VAR[QuitLabel2]</label>
                             <onclick>XBMC.hibernate()</onclick>
                         </item>
-                        <item id="14" description="Quit">
+                        <item id="14" description="Suspend">
                             <visible>!Skin.HasSetting(XBMC5) + StringCompare(Skin.String(shutdown),suspend)</visible>
                             <label fallback="13009">$VAR[QuitLabel2]</label>
                             <onclick>XBMC.suspend()</onclick>
                         </item>
-                        <item id="15" description="Quit">
+                        <item id="15" description="Reboot">
                             <visible>!Skin.HasSetting(XBMC5) + StringCompare(Skin.String(shutdown),reboot)</visible>
                             <label fallback="13009">$VAR[QuitLabel2]</label>
                             <onclick>XBMC.reboot()</onclick>
                         </item>
+                        <item id="16" description="Reload Skin">
+							<label>$LOCALIZE[20183]</label>
+                            <onclick>XBMC.ReloadSkin()</onclick>
+                        </item>
                     </content>
                     <include>Animation306</include>
                 </control>
-                <animation type="Conditional" condition="Control.HasFocus(700)">
-                    <effect type="fade" start="100" end="75" time="300" reversible="true"/>
+                <!-- Fade if focus is on shelf or mini-player -->
+                <animation type="Conditional" condition="ControlGroup(700).HasFocus(id) | ControlGroup(599).HasFocus(id)">
+                    <effect type="fade" start="100" end="60" time="300" reversible="true"/>
                 </animation>
             </control>
             <control type="group" description="Main Bar items">
+
                 <animation effect="slide" start="0,0" end="750,0" time="0" condition="StringCompare(Container(500).NumItems,1)">conditional</animation>
                 <animation effect="slide" start="0,0" end="600,0" time="0" condition="StringCompare(Container(500).NumItems,2)">conditional</animation>
                 <animation effect="slide" start="0,0" end="450,0" time="0" condition="StringCompare(Container(500).NumItems,3)">conditional</animation>
                 <animation effect="slide" start="0,0" end="300,0" time="0" condition="StringCompare(Container(500).NumItems,4)">conditional</animation>
                 <animation effect="slide" start="0,0" end="150,0" time="0" condition="StringCompare(Container(500).NumItems,5)">conditional</animation>
+
+                <!-- More than 5 (6 items)
+                <animation effect="slide" start="0,0" end="150,0" time="0" condition="StringCompare(Container(500).NumItems,6)">conditional</animation>
+
+                <animation effect="slide" start="0,0" end="150,0" time="0" condition="StringCompare(Container(500).NumItems,7)">conditional</animation>
+                <animation effect="slide" start="0,0" end="150,0" time="0" condition="StringCompare(Container(500).NumItems,8)">conditional</animation>
+                <animation effect="slide" start="0,0" end="150,0" time="0" condition="StringCompare(Container(500).NumItems,9)">conditional</animation>
+            -->
                 <control type="image" description="Bar">
                     <posx>-15</posx>
                     <posy>473</posy>
@@ -524,9 +632,12 @@
                     <include>HomeBarAnimation</include>
                 </control>
                 <control type="list" id="500" description="Navbar">
-                    <onleft>noop</onleft>
-                    <onright>noop</onright>
-                    <onup>700</onup>
+                    <onleft>1</onleft><!--         Stock is noop -->
+                    <onright>2</onright><!-- Stock is noop -->
+                    <!-- Detect if there is focusable content in shelf and go there on up -->
+                    <onup condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onup>
+                    <!-- If nothing in shelf, go to mini player on up -->
+                    <onup>599</onup>
                     <ondown>300</ondown>
                     <posx>60</posx>
                     <posy>480</posy>
@@ -565,7 +676,7 @@
                             <label fallback="20342">$INFO[Skin.String(MoviesName)]</label>
                             <onclick>SetFocus(301)</onclick>
                         </item>
-                        <item id="2" description="TV">
+                        <item id="2" description="TV Shows">
                             <visible>Control.IsVisible(302)</visible>
                             <label fallback="20343">$INFO[Skin.String(TVName)]</label>
                             <onclick>SetFocus(302)</onclick>
@@ -575,35 +686,50 @@
                             <label fallback="2">$INFO[Skin.String(MusicName)]</label>
                             <onclick>SetFocus(303)</onclick>
                         </item>
+
                         <item id="4" description="Pictures">
                             <visible>Control.IsVisible(304)</visible>
                             <label fallback="1">$INFO[Skin.String(PicturesName)]</label>
                             <onclick>SetFocus(304)</onclick>
+                        </item>
+                        <item id="7" description="Live TV">
+                            <visible>Control.IsVisible(307)</visible>
+                            <label fallback="Live TV">31502</label>
+                            <onclick>SetFocus(307)</onclick>
                         </item>
                         <item id="5" description="Addons">
                             <visible>Control.IsVisible(305)</visible>
                             <label fallback="24001">$INFO[Skin.String(AddonsName)]</label>
                             <onclick>SetFocus(305)</onclick>
                         </item>
-                        <item id="6" description="XBMC">
-                            <label fallback="KODI">$INFO[Skin.String(XBMCName)]</label>
+
+                        <item id="6" description="System">
+                            <visible>Control.IsVisible(306)</visible>
+                            <label fallback="System">$INFO[Skin.String(XBMCName)]</label>
                             <onclick>SetFocus(306)</onclick>
                         </item>
+
                     </content>
                 </control>
             </control>
             <control type="group" id="700" description="Shelf items">
+                <!-- We Fade if focus is on the MiniPlayer -->
+                <animation type="Conditional" condition="ControlGroup(599).HasFocus(id)">
+                    <effect type="fade" start="100" end="60" time="300" reversible="true"/>
+                </animation>
+
                 <include condition="!Skin.HasSetting(MoviesShelf_Image)">Movies_RA</include>
                 <include condition="!Skin.HasSetting(TVShelf_Image)">TV_RA</include>
-                <include condition="!Skin.HasSetting(MusicShelf_Image)">Music_RA</include>
-                <include condition="Skin.HasSetting(PicturesShelf_Custom)">Pictures_Shortcuts</include>
+				<include condition="!Skin.HasSetting(MusicShelf_Image)">Music_RA</include>
+				<include condition="Skin.HasSetting(PicturesShelf_Custom)">Pictures_Shortcuts</include>
                 <include condition="Skin.HasSetting(AddonsShelf_Custom)">Addons_Shortcuts</include>
-                <control type="group" description="Playing">
-                    <visible>ControlGroup(9000).HasFocus(306) + Player.HasMedia</visible>
+                <!-- We should detect if nothing is in the shelf but logo or image -->
+                <control type="group" description="Shelf Video Windwo">
+                    <visible>[ControlGroup(9000).HasFocus(306) | ControlGroup(9000).HasFocus(307)] + Player.HasVideo</visible>
                     <posy>57</posy>
                     <animation effect="fade" start="100" end="0" time="100">Hidden</animation>
                     <animation effect="fade" start="0" end="100" delay="300" time="300">VisibleChange</animation>
-                    <include>PlayingInfo</include>
+                    <include>Shelf_Video_Window</include>
                 </control>
                 <control type="image" description="Custom Image">
                     <visible>[ControlGroup(9000).HasFocus(301) + Skin.HasSetting(MoviesShelf_Image)] | [ControlGroup(9000).HasFocus(302) + Skin.HasSetting(TVShelf_Image)] | [ControlGroup(9000).HasFocus(303) + Skin.HasSetting(MusicShelf_Image)] | [ControlGroup(9000).HasFocus(304) + Skin.HasSetting(PicturesShelf_Image)] | [ControlGroup(9000).HasFocus(305) + Skin.HasSetting(AddonsShelf_Image)] | [ControlGroup(9000).HasFocus(306) + Skin.HasSetting(XBMCShelf_Image) + !Player.HasMedia]</visible>
@@ -618,7 +744,7 @@
                 </control>
                 <control type="image" description="Logo">
                     <visible>[ControlGroup(9000).HasFocus(301) + !Skin.HasSetting(MoviesShelf_Image) + !Control.IsVisible(311)] | [ControlGroup(9000).HasFocus(302) + !Skin.HasSetting(TVShelf_Image) + !Control.IsVisible(312)] | [ControlGroup(9000).HasFocus(303) + !Skin.HasSetting(MusicShelf_Image) + !Control.IsVisible(313)] | [ControlGroup(9000).HasFocus(304) + !Skin.HasSetting(PicturesShelf_Image) + !Control.IsVisible(314)] | [ControlGroup(9000).HasFocus(305) +
-                        !Skin.HasSetting(AddonsShelf_Image) + !Control.IsVisible(315)] | [ControlGroup(9000).HasFocus(306) + !Skin.HasSetting(XBMCShelf_Image) + !Player.HasMedia]
+                        !Skin.HasSetting(AddonsShelf_Image) + !Control.IsVisible(315)] | [ControlGroup(9000).HasFocus(306) + !Skin.HasSetting(XBMCShelf_Image)] | ControlGroup(9000).HasFocus(307)
                     </visible>
                     <include>ListVisibleFade</include>
                     <centerleft>960</centerleft>
@@ -629,93 +755,8 @@
                     <texture>logo/Kodi.png</texture>
                 </control>
             </control>
-            <control type="group" description="Player Info">
-                <visible>!Control.HasFocus(301) + Player.HasAudio + ![Window.IsActive(DialogBusy.xml) | Window.IsActive(VideoFullscreen.xml)]</visible>
-                <visible>!IntegerGreaterThan(Player.Time,8) | !IntegerGreaterThan(Player.TimeRemaining,8)</visible>
-                <include>VisibleFadeEffect</include>
-                <animation effect="fade" start="100" end="0" time="100" condition="Control.HasFocus(301)">conditional</animation>
-                <posx>15</posx>
-                <posy>960</posy>
-                <control type="image" description="Playing BG">
-                    <width>390</width>
-                    <height>105</height>
-                    <texture border="14">img/ProgressBG.png</texture>
-                </control>
-                <control type="group">
-                    <control type="image">
-                        <posx>15</posx>
-                        <posy>15</posy>
-                        <width>75</width>
-                        <height>75</height>
-                        <texture>$INFO[MusicPlayer.Cover]</texture>
-                        <aspectratio>keep</aspectratio>
-                    </control>
-                    <control type="image">
-                        <posx>15</posx>
-                        <posy>21</posy>
-                        <width>75</width>
-                        <height>75</height>
-                        <texture>$INFO[VideoPlayer.Cover]</texture>
-                        <aspectratio>keep</aspectratio>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>9</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size16</font>
-                        <textcolor>White2</textcolor>
-                        <label>$INFO[MusicPlayer.Title]</label>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>36</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size14</font>
-                        <label>$INFO[MusicPlayer.Artist]</label>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>60</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size14</font>
-                        <label>$INFO[MusicPlayer.Album]</label>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>9</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size16</font>
-                        <textcolor>White2</textcolor>
-                        <label>$INFO[VideoPlayer.Title]</label>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>36</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size14</font>
-                        <label>$INFO[VideoPlayer.Artist]</label>
-                    </control>
-                    <control type="label">
-                        <posx>105</posx>
-                        <posy>60</posy>
-                        <aligny>center</aligny>
-                        <width>261</width>
-                        <height>36</height>
-                        <font>size14</font>
-                        <label>$INFO[VideoPlayer.Album]</label>
-                    </control>
-                </control>
-            </control>
+
         </control>
+
     </controls>
 </window>
