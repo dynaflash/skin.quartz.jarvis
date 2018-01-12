@@ -1,7 +1,8 @@
-<addon id="skin.quartz" version="5.3" name="Quartz" provider-name="TPX01">
+<addon id="skin.quartz.kinos" version="5.3.1-Jarvis-Kinos" name="Quartz 5" provider-name="Dynaflash">
   <requires>
     <import addon="xbmc.gui" version="5.10.0"/>
-    <import addon="script.favourites" version="4.0.4"/>
+    <import addon="script.favourites" version="6.0.3"/>
+    <import addon="service.skin.widgets" version="0.0.32"/>
   </requires>
   <extension
     point="xbmc.gui.skin" defaultthemename="Textures.xbt" debugging="false">
