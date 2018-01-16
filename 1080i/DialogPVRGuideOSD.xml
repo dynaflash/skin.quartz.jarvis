@@ -3,46 +3,49 @@
     <defaultcontrol always="true">11</defaultcontrol>
     <coordinates>
         <system>1</system>
-        <posx>810</posx>
-        <posy>15</posy>
+        <posx>1020</posx>
+        <posy>40</posy>
     </coordinates>
     <controls>
         <control type="group">
             <include>DialogOpenClose</include>
             <control type="image">
-                <posx>50</posx>
+                <posx>-50</posx>
                 <posy>30</posy>
-                <width>1122</width>
+                <width>900</width>
                 <height>930</height>
                 <aspectratio>stretch</aspectratio>
-                <texture border="21">img/DialogNew.png</texture>
-                <colordiffuse>Overlay</colordiffuse>
+                <texture>texture/dialog.png</texture>
+                <bordertexture border="22">texture/dialog_border.png</bordertexture>
+                <bordersize>22</bordersize>
             </control>
             <control type="label" description="Header">
-                <posx>240</posx>
-                <posy>168</posy>
+                <posx>50</posx>
+                <posy>80</posy>
                 <width>720</width>
                 <height>45</height>
                 <font>size20</font>
-                <textcolor>White</textcolor>
-                <label>[B]$INFO[VideoPlayer.ChannelName][/B] - $INFO[Container(11).ListItem.StartDate]</label>
+                <textcolor>HL</textcolor>
+                <label>[B]$INFO[VideoPlayer.ChannelNumberLabel,, ] $INFO[VideoPlayer.ChannelName][/B] - $INFO[Container(11).ListItem.StartDate]</label>
                 <align>center</align>
                 <aligny>center</aligny>
             </control>
-            <control type="list" id="11">
-                <posx>240</posx>
-                <posy>240</posy>
+            <control type="fixedlist" id="11">
+                <posx>50</posx>
+                <posy>180</posy>
                 <width>720</width>
-                <height>525</height>
+                <height>675</height>
                 <onleft>close</onleft>
                 <onright>60</onright>
                 <onup>11</onup>
                 <ondown>11</ondown>
                 <pagecontrol>60</pagecontrol>
-                <scrolltime>200</scrolltime>
+                <scrolltime>400</scrolltime>
+                <focusposition>4</focusposition>
+                <movement>4</movement>
                 <itemlayout height="75" width="720">
                     <control type="label">
-                        <posx>129</posx>
+                        <posx>0</posx>
                         <posy>0</posy>
                         <width>120</width>
                         <height>75</height>
@@ -58,7 +61,7 @@
                         <posy>0</posy>
                         <width>30</width>
                         <height>75</height>
-                        <texture>OverlayRecording.png</texture>
+                        <texture>overlay/pvr/OverlayRecording.png</texture>
                         <aspectratio>keep</aspectratio>
                         <visible>ListItem.IsRecording</visible>
                     </control>
@@ -67,7 +70,7 @@
                         <posy>0</posy>
                         <width>21</width>
                         <height>75</height>
-                        <texture>OverlayTimer.png</texture>
+                        <texture>overlay/pvr/OverlayTimer.png</texture>
                         <aspectratio>keep</aspectratio>
                         <visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
                     </control>
@@ -108,7 +111,7 @@
                         <visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
                     </control>
                     <control type="label">
-                        <posx>129</posx>
+                        <posx>8</posx>
                         <posy>0</posy>
                         <width>120</width>
                         <height>75</height>
