@@ -273,7 +273,7 @@
         <control type="group" description="Now Playing Home MinPlayer">
             <visible>[Player.HasVideo | Player.HasAudio] + [!Window.IsActive(DialogBusy.xml) | !Window.IsActive(VideoFullscreen.xml)]</visible>
             <animation effect="fade" tween="cubic" easing="inout" time="1200">VisibleChange</animation>
-            <posx>15</posx>
+            <posx>100</posx>
             <posy>15</posy>
             <width>800</width>
             <height>100</height>
