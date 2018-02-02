@@ -18,7 +18,7 @@
         </control>
         <control type="image">
             <visible>Player.HasAudio</visible>
-            <posx>94</posx>
+            <posx>170</posx><!-- Align with left side of miniplayer is 94 -->
             <posy>52</posy>
             <width>320</width>
             <height>320</height>
