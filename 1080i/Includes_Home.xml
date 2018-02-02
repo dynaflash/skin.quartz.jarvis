@@ -346,6 +346,7 @@
                 <width>800</width>
                 <height>50</height>
                 <align>left</align>
+                <onhidden>9000</onhidden>
                 <!-- Detect if there is focusable content in shelf and go there on down -->
                 <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
                 <!-- Else go back to the main nav bar on down -->
@@ -411,11 +412,14 @@
                     <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
                     <!-- Else go back to the main nav bar on down -->
                     <ondown>9000</ondown>
-                    <onclick>PlayerControl(Stop)</onclick>
+
                     <!-- Detect if there is focusable content in shelf and go there on down -->
                     <onclick condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onclick>
                     <!-- Else go back to the main nav bar on down -->
                     <onclick>9000</onclick>
+                    <onclick>PlayerControl(Stop)</onclick>
+                    <!-- We need to change focus if hidden (play stops) -->
+                    <onhidden>9000</onhidden>
                 </control>
                 <control type="button" id="604">
                     <posx>160</posx>

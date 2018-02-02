@@ -9,13 +9,23 @@
         <animation effect="fade" end="0" time="100">Hidden</animation>
     </include>
     <include name="Shelf_Video_Window">
-        <!-- Taken from Live TV Code in the Channel Switcher View -->
         <control type="videowindow">
             <visible>Player.HasVideo</visible>
-            <posx>90</posx>
+            <posx>120</posx>
             <posy>15</posy>
             <width>480</width>
             <height>360</height>
+        </control>
+        <control type="image">
+            <visible>Player.HasAudio</visible>
+            <posx>94</posx>
+            <posy>52</posy>
+            <width>320</width>
+            <height>320</height>
+            <texture fallback="HUD/Volume.png">$INFO[MusicPlayer.Cover]</texture>
+            <aspectratio>keep</aspectratio>
+            <bordertexture border="12">img/ThumbBorder.png</bordertexture>
+            <bordersize>9</bordersize>
         </control>
     </include>
     <include name="MoviesShortcutsCommons">

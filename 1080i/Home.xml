@@ -724,8 +724,8 @@
 				<include condition="Skin.HasSetting(PicturesShelf_Custom)">Pictures_Shortcuts</include>
                 <include condition="Skin.HasSetting(AddonsShelf_Custom)">Addons_Shortcuts</include>
                 <!-- We should detect if nothing is in the shelf but logo or image -->
-                <control type="group" description="Shelf Video Windwo">
-                    <visible>[ControlGroup(9000).HasFocus(306) | ControlGroup(9000).HasFocus(307)] + Player.HasVideo</visible>
+                <control type="group" description="Shelf Video Window">
+                    <visible>[ControlGroup(9000).HasFocus(306) | ControlGroup(9000).HasFocus(307)] + [Player.HasVideo | Player.HasAudio]</visible>
                     <posy>57</posy>
                     <animation effect="fade" start="100" end="0" time="100">Hidden</animation>
                     <animation effect="fade" start="0" end="100" delay="300" time="300">VisibleChange</animation>
