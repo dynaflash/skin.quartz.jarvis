@@ -47,7 +47,11 @@
             <visible>Control.IsVisible(51)</visible>
             <control type="group">
                 <animation condition="Container.Content(songs)" effect="slide" end="0,-231" time="0">Conditional</animation>
-                <include>DefaultSquareThumbs</include>
+                <control type="group" description="Cover">
+                    <posx>0</posx>
+                    <posy>240</posy>
+                    <include>DefaultSquareThumbs</include>
+                </control>
             </control>
             <control type="group">
                 <visible>!container.content(addons)</visible>
@@ -83,7 +87,11 @@
             <visible>Control.IsVisible(52)</visible>
             <control type="group">
                 <animation condition="True" effect="slide" end="0,-231" time="0">Conditional</animation>
-                <include>DefaultSquareThumbs</include>
+                <control type="group" description="Cover">
+                    <posx>0</posx>
+                    <posy>240</posy>
+                    <include>DefaultSquareThumbs</include>
+                </control>
             </control>
             <include>MusicInfo</include>
             <control type="group" description="Slider and List">
