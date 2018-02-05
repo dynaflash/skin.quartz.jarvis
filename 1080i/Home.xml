@@ -243,93 +243,104 @@
                     <ondown>noop</ondown>
                     <include>Sublist</include>
                     <content>
-                        <item id="0" description="Artists">
+                        <item id="0"  description="Now Playing Music Playlist Queued">
+                            <!-- We make sure that audio is playing AND there is a previous or next queue item -->
+                            <visible>Player.HasAudio + [MusicPlayer.HasNext | MusicPlayer.HasPrevious] + Library.HasContent(Music)</visible>
+                            <label>$LOCALIZE[31040]</label>
+                            <onclick>ActivateWindow(musicplaylist)</onclick>
+                        </item>
+                        <item id="1" description="Artists">
                             <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
-                            <label>133</label>
+                            <label>$LOCALIZE[133]</label>
                             <onclick condition="Library.HasContent(Music)">ActivateWindow(MusicLibrary,Artists,return)</onclick>
                         </item>
-                        <item id="1" description="Albums">
+                        <item id="2" description="Albums">
                             <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
                             <label>Albums</label>
                             <onclick>ActivateWindow(MusicLibrary,Albums,return)</onclick>
                         </item>
-                        <item id="2" description="Recently added">
+                        <item id="3" description="Recently added">
                             <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
                             <label>$LOCALIZE[31020]</label>
                             <onclick>ActivateWindow(Music,recentlyaddedalbums,return)</onclick>
                         </item>
-                        <item id="3" description="Top 100">
+                        <item id="4" description="Playlists">
+                            <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
+                            <label>$LOCALIZE[136]</label>
+                            <onclick>ActivateWindow(Music,playlists,return)</onclick>
+                        </item>
+                        <item id="5" description="Top 100">
                             <visible>!Skin.HasSetting(Music1) + Library.HasContent(Music)</visible>
                             <label>$LOCALIZE[271]</label>
                             <onclick>ActivateWindow(Music,top100,return)</onclick>
                         </item>
-                        <item id="4" description="Music Videos">
+                        <item id="6" description="Music Videos">
                             <visible>!Skin.HasSetting(Music2) + Library.HasContent(MusicVideos)</visible>
                             <label>3</label>
                             <onclick>ActivateWindow(VideoLibrary,MusicVideos,return)</onclick>
                         </item>
-                        <item id="5" description="Library">
+                        <item id="7" description="Library">
                             <visible>!Skin.HasSetting(Music3) + Library.HasContent(Music)</visible>
                             <label>14022</label>
                             <onclick>ActivateWindow(MusicLibrary,root)</onclick>
                         </item>
-                        <item id="6" description="Files">
+                        <item id="8" description="Files">
                             <visible>!Skin.HasSetting(Music4)</visible>
                             <label>744</label>
                             <onclick>ActivateWindow(MusicFiles,root)</onclick>
                         </item>
-                        <item id="7" description="Party mode">
+                        <item id="9" description="Party mode">
                             <visible>!Skin.HasSetting(Music7) + Library.HasContent(music)</visible>
                             <label>589</label>
                             <onclick>PlayerControl(PartyMode(music))</onclick>
                         </item>
-                        <item id="8" description="Custom Music">
+                        <item id="10" description="Custom Music">
                             <visible>!IsEmpty(Skin.String(CustomMusic.1.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.1.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.1.Path)]</onclick>
                         </item>
-                        <item id="9" description="Shortcut2">
+                        <item id="11" description="Shortcut2">
                             <visible>!IsEmpty(Skin.String(CustomMusic.2.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.2.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.2.Path)]</onclick>
                         </item>
-                        <item id="10" description="Shortcut3">
+                        <item id="12" description="Shortcut3">
                             <visible>!IsEmpty(Skin.String(CustomMusic.3.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.3.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.3.Path)]</onclick>
                         </item>
-                        <item id="11" description="Shortcut4">
+                        <item id="13" description="Shortcut4">
                             <visible>!IsEmpty(Skin.String(CustomMusic.4.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.4.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.4.Path)]</onclick>
                         </item>
-                        <item id="12" description="Shortcut5">
+                        <item id="14" description="Shortcut5">
                             <visible>!IsEmpty(Skin.String(CustomMusic.5.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.5.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.5.Path)]</onclick>
                         </item>
-                        <item id="13" description="Shortcut6">
+                        <item id="15" description="Shortcut6">
                             <visible>!IsEmpty(Skin.String(CustomMusic.6.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.6.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.6.Path)]</onclick>
                         </item>
-                        <item id="14" description="Shortcut7">
+                        <item id="16" description="Shortcut7">
                             <visible>!IsEmpty(Skin.String(CustomMusic.7.Path))</visible>
                             <label>$INFO[Skin.String(CustomMusic.7.Label)]</label>
                             <onclick>$INFO[Skin.String(CustomMusic.7.Path)]</onclick>
                         </item>
-                        <item id="15" description="Search">
+                        <item id="17" description="Search">
                             <visible>!Skin.HasSetting(Music5) + [Library.HasContent(Music) | Library.HasContent(MusicVideos)]</visible>
                             <label>137</label>
                             <onclick>ActivateWindow(MusicLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
                         </item>
-                        <item id="16" description="Update library">
+                        <item id="18" description="Update library">
                             <visible>Library.HasContent(Music)</visible>
                             <label>653</label>
                             <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">UpdateLibrary(Music)</onclick>
                         </item>
-                        <item id="17" description="Clean library">
+                        <item id="19" description="Clean library">
                             <visible>Library.HasContent(Video)</visible>
                             <label>32001</label>
                             <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">CleanLibrary(Music)</onclick>
