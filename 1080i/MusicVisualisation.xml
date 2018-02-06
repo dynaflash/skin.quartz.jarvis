@@ -55,6 +55,10 @@
                 <control type="group" description="Info panel LEFT">
                     <posx>-30</posx>
                     <posy>120</posy>
+                    <!-- Disable the "Flip" Animation for now.
+                    If we re-enable it make it a user option.
+                    Leave code here for reference. -->
+                    <!--
                     <animation type="Conditional" condition="!IntegerGreaterThan(Control.GetLabel(23),0)" reversible="false">
                         <effect type="zoom" tween="quadratic" start="0" end="100" time="800" center="640,360"/>
                         <effect type="fade" start="0" end="100" time="800" center="640,360"/>
@@ -71,6 +75,7 @@
                         <effect type="rotatey" tween="quadratic" start="180" end="0" time="1000" center="960,540"/>
                         <effect type="fade" start="0" end="100" delay="300" time="700" center="640,360"/>
                     </animation>
+                    -->
                     <control type="group" description="Music Cover group">
                         <posy>330</posy>
                         <posx>150</posx>
@@ -171,10 +176,13 @@
                         </control>
                     </control>
                 </control>
+                <!-- Commented out but left here (for reference) to disable Info panel switching
                 <control type="group" description="Info panel RIGHT">
                     <posx>168</posx>
                     <posy>120</posy>
+
                     <visible>IntegerGreaterThan(Control.GetLabel(23),30) + !IntegerGreaterThan(Control.GetLabel(23),60)</visible>
+
                     <animation type="Visible" reversible="false">
                         <effect type="rotatey" tween="quadratic" start="-180" end="0" time="1000" center="960,"/>
                         <effect type="fade" start="0" end="100" delay="300" time="700" center="640,360"/>
@@ -183,6 +191,7 @@
                         <effect type="rotatey" tween="quadratic" start="0" end="-180" time="1000" center="960,"/>
                         <effect type="fade" start="100" end="0" time="400" center="640,360"/>
                     </animation>
+
                     <control type="group" description="Music Cover group">
                         <posy>330</posy>
                         <posx>1170</posx>
@@ -284,6 +293,7 @@
                         </control>
                     </control>
                 </control>
+                -->
             </control>
         </control>
         <control type="group" id="0">
