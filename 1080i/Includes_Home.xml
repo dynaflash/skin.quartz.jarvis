@@ -413,13 +413,13 @@
                     <!-- Else go back to the main nav bar on down -->
                     <ondown>9000</ondown>
 
-                    <!-- Detect if there is focusable content in shelf and go there on down -->
-                    <onclick condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onclick>
-                    <!-- Else go back to the main nav bar on down -->
-                    <onclick>9000</onclick>
                     <onclick>PlayerControl(Stop)</onclick>
-                    <!-- We need to change focus if hidden (play stops) -->
-                    <onhidden>9000</onhidden>
+                    <!-- Since we have stopped the player and the mini player will hide.
+                    Detect if there is focusable content in shelf and focus there if so -->
+                    <onclick condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">Control.SetFocus(700)</onclick>
+                    <!-- Else send focus back to the main nav bar -->
+                    <onclick condition="![Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)]">Control.SetFocus(9000)</onclick>
+
                 </control>
                 <control type="button" id="604">
                     <posx>160</posx>
