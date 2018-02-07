@@ -40,7 +40,7 @@
                     <ondown>609</ondown>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDRepeatNF.png</texturefocus>
                     <texturenofocus>MusicOSD/OSDRepeatNF.png</texturenofocus>
-                    <onclick>PlayerControl(Repeat)</onclick>
+                    <onclick>XBMC.PlayerControl(Repeat)</onclick>
                 </control>
                 <control type="image" id="4">
                     <posx>0</posx>
@@ -149,8 +149,9 @@
                     <height>98</height>
                     <label>$LOCALIZE[590]$INFO[Playlist.Random, : ]</label>
                     <altlabel>$LOCALIZE[590] : $LOCALIZE[16041]</altlabel>
+                    <font>-</font>
                     <onleft>605</onleft>
-                    <onright>608</onright>
+                    <onright>609</onright>
                     <onup>609</onup>
                     <ondown>609</ondown>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDRandomOffNF.png</texturefocus>
@@ -158,24 +159,8 @@
                     <usealttexture>Playlist.IsRandom</usealttexture>
                     <alttexturefocus colordiffuse="HL">MusicOSD/OSDRandomOnNF.png</alttexturefocus>
                     <alttexturenofocus>MusicOSD/OSDRandomOnNF.png</alttexturenofocus>
-                    <onclick>PlayerControl(Random)</onclick>
-                </control>
-                <!-- Go to currently playing music playlist (Queue) -->
-                <control type="button" id="608">
-                    <posx>475</posx>
-                    <posy>25</posy>
-                    <width>90</width>
-                    <height>50</height>
-                    <texturefocus colordiffuse="HL">OSD/Options.png</texturefocus>
-                    <texturenofocus colordiffuse="Grey3">OSD/Options.png</texturenofocus>
-                    <onleft>21</onleft>
-                    <onright>609</onright>
-                    <onup>609</onup>
-                    <ondown>609</ondown>
-                    <onclick>Close</onclick>
-                    <onclick>ActivateWindow(MusicPlaylist)</onclick>
-                </control>
-
+                    <onclick>XBMC.PlayerControl(Random)</onclick>
+                </control>                 <!-- <control type="button" id="604">                   <visible>false</visible>                   <posx>100</posx>                   <posy>0</posy>                   <width>60</width>                   <height>65</height>                   <label>31353</label>                   <font>-</font>                   <texturefocus>MusicOSD/OSDFWFO.png</texturefocus>                   <texturenofocus>MusicOSD/OSDFWNF.png</texturenofocus>                   <onleft>603</onleft>                   <onright>605</onright>                   <onup>609</onup>                   <ondown>609</ondown>                   <onclick>PlayerControl(Forward)</onclick>                 </control>-->
                 <control type="button" id="609">
                     <description>Options</description>
                     <posx>1050</posx>
@@ -184,7 +169,7 @@
                     <height>98</height>
                     <label>$LOCALIZE[33063]</label>
                     <font>-</font>
-                    <onleft>608</onleft>
+                    <onleft>21</onleft>
                     <onright>10</onright>
                     <onup>602</onup>
                     <ondown>602</ondown>

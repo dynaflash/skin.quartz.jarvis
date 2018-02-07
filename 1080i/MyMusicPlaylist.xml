@@ -4,16 +4,6 @@
     <include>OpenClose</include>
     <controls>
         <include>FullBackground</include>
-        <!-- Show playlist header here -->
-        <control type="label">
-        <posx>50%</posx>
-        <posy>30</posy>
-        <width>820</width>
-        <align>center</align>
-        <label>$LOCALIZE[10517]</label>
-        <textcolor>HL</textcolor>
-      </control>
-
         <control type="group">
             <posx>0</posx>
             <posy>0</posy>
