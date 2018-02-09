@@ -21,19 +21,16 @@
             <texture>img/BlackDotST.png</texture>
         </control>
         <control type="group">
-            <posx>120</posx>
-            <posy>758</posy>             <!--101-->
+            <posx>90</posx>
+            <posy>758</posy>
             <control type="group" id="101">
                 <posx>608</posx>
                 <posy>93r</posy>
                 <control type="button" id="1">
-                    <description>Repeat</description>
                     <posx>0</posx>
                     <posy>3</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>$LOCALIZE[486]$INFO[Playlist.Repeat, : ]</label>
-                    <font>-</font>
                     <onleft>11</onleft>
                     <onright>600</onright>
                     <onup>609</onup>
@@ -77,14 +74,12 @@
                     <texture colordiffuse="HL">MusicOSD/OSDRepeatAllNF.png</texture>
                     <visible>Playlist.IsRepeat</visible>
                     <visible>Control.HasFocus(1)</visible>
-                </control>                 <!--<control type="button" id="601">                   <visible>false</visible>                   <posx>-150</posx>                   <posy>0</posy>                   <width>60</width>                   <height>65</height>                   <label>31354</label>                   <font>-</font>                   <texturefocus>MusicOSD/OSDRewindFO.png</texturefocus>                   <texturenofocus>MusicOSD/OSDRewindNF.png</texturenofocus>                   <onleft>600</onleft>                   <onright>602</onright>                   <onup>609</onup>                   <ondown>609</ondown>                   <onclick>PlayerControl(Rewind)</onclick>                 </control>-->
+                </control>
                 <control type="button" id="600">
-                    <posx>75</posx>
+                    <posx>60</posx>
                     <posy>0</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>210</label>
-                    <font>-</font>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDPreviousNF.png</texturefocus>
                     <texturenofocus>MusicOSD/OSDPreviousNF.png</texturenofocus>
                     <onleft>1</onleft>
@@ -93,62 +88,77 @@
                     <ondown>609</ondown>
                     <onclick>PlayerControl(Previous)</onclick>
                 </control>
+                <control type="button" id="601">
+                    <posx>120</posx>
+                    <posy>19</posy>
+                    <width>93</width>
+                    <height>57</height>
+                    <texturenofocus colordiffuse="Grey3">OSD/Rewind.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSD/Rewind.png</texturefocus>
+                    <onleft>600</onleft>
+                    <onright>602</onright>
+                    <onup>609</onup>
+                    <onclick>PlayerControl(Rewind)</onclick>
+                </control>
                 <control type="togglebutton" id="602">
-                    <posx>150</posx>
+                    <posx>185</posx>
                     <posy>0</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>31351</label>
-                    <altlabel>208</altlabel>
-                    <font>-</font>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDPauseNF.png</texturefocus>
                     <texturenofocus>MusicOSD/OSDPauseNF.png</texturenofocus>
                     <usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
                     <alttexturefocus colordiffuse="HL">MusicOSD/OSDPlayNF.png</alttexturefocus>
                     <alttexturenofocus>MusicOSD/OSDPlayNF.png</alttexturenofocus>
-                    <onleft>600</onleft>
+                    <onleft>601</onleft>
                     <onright>603</onright>
                     <onup>609</onup>
                     <ondown>609</ondown>
                     <onclick>PlayerControl(Play)</onclick>
                 </control>
                 <control type="button" id="603">
-                    <posx>225</posx>
+                    <posx>230</posx>
                     <posy>0</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>31352</label>
-                    <font>-</font>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDStopNF.png</texturefocus>
                     <texturenofocus>MusicOSD/OSDStopNF.png</texturenofocus>
                     <onleft>602</onleft>
-                    <onright>605</onright>
+                    <onright>604</onright>
                     <onup>609</onup>
                     <ondown>609</ondown>
                     <onclick>PlayerControl(Stop)</onclick>
                 </control>
+                <control type="button" id="604">
+                    <posx>290</posx>
+                    <posy>20</posy>
+                    <width>93</width>
+                    <height>57</height>
+                    <texturenofocus colordiffuse="Grey3">OSD/FastForward.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSD/FastForward.png</texturefocus>
+                    <onleft>603</onleft>
+                    <onright>605</onright>
+                    <onup>609</onup>
+                    <onclick>PlayerControl(Forward)</onclick>
+                </control>
                 <control type="button" id="605">
-                    <posx>300</posx>
+                    <posx>350</posx>
                     <posy>0</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>209</label>
-                    <font>-</font>
                     <texturefocus colordiffuse="HL">MusicOSD/OSDNextNF.png</texturefocus>
                     <texturenofocus>MusicOSD/OSDNextNF.png</texturenofocus>
-                    <onleft>603</onleft>
+                    <onleft>604</onleft>
                     <onright>21</onright>
                     <onup>609</onup>
                     <ondown>609</ondown>
                     <onclick>PlayerControl(Next)</onclick>
                 </control>
                 <control type="togglebutton" id="21" description="Random">
-                    <posx>375</posx>
+                    <posx>405</posx>
                     <posy>1</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>$LOCALIZE[590]$INFO[Playlist.Random, : ]</label>
-                    <altlabel>$LOCALIZE[590] : $LOCALIZE[16041]</altlabel>
                     <onleft>605</onleft>
                     <onright>608</onright>
                     <onup>609</onup>
@@ -162,7 +172,7 @@
                 </control>
                 <!-- Go to currently playing music playlist (Queue) -->
                 <control type="button" id="608">
-                    <posx>475</posx>
+                    <posx>485</posx>
                     <posy>25</posy>
                     <width>90</width>
                     <height>50</height>
@@ -177,13 +187,10 @@
                 </control>
 
                 <control type="button" id="609">
-                    <description>Options</description>
                     <posx>1050</posx>
                     <posy>3</posy>
                     <width>90</width>
                     <height>98</height>
-                    <label>$LOCALIZE[33063]</label>
-                    <font>-</font>
                     <onleft>608</onleft>
                     <onright>10</onright>
                     <onup>602</onup>
@@ -214,7 +221,7 @@
                 <textcolor>HL</textcolor>
                 <include>TitleCommons</include>
             </control>
-            <control type="grouplist" id="100" description="Music OSD Options">
+            <control type="grouplist" id="100" description="Music OSD Options Menu">
                 <posx>698</posx>
                 <posy>366</posy>
                 <width>525</width>
