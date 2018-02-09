@@ -9,7 +9,7 @@
         <control type="image" id="999" description="Background image">
             <posx>0</posx>
             <posy>-100</posy>
-            <height>419</height>
+            <height>519</height>
             <width>530</width>
             <texture>texture/dialog.png</texture>
             <bordertexture border="22">texture/dialog_border.png</bordertexture>
@@ -19,7 +19,7 @@
             <posx>22</posx>
             <posy>-78</posy>
             <width>486</width>
-            <height>375</height>
+            <height>475</height><!-- Was 375 -->
             <itemgap>3</itemgap>
             <control type="button" id="2001" description="InProgressReset">
                 <visible>[Container.Content(Episodes) | Container.Content(Movies)] + system.hasaddon(script.module.inprogressreset) + !SubString(ListItem.PercentPlayed,0,left)</visible>
