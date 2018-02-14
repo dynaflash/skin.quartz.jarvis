@@ -14,7 +14,7 @@
             <!-- Start Top Window Now Playing -->
             <include>MiniPlayer_Home</include>
             <!-- END Top Window Now Playing -->
-
+            <include>PVR_Shelf_Status</include>
             <control type="group" description="Furniture">
                 <control type="image" description="Navbar">
                     <posx>-90</posx>
@@ -53,7 +53,7 @@
                 <height>420</height>
                 <align>center</align>
                 <aligny>top</aligny>
-                <onup condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onup>
+                <onup condition="Control.IsVisible(311) | Control.IsVisible(312) | Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</onup>
                 <!-- If nothing in shelf, go to mini player on up -->
                 <onup>599</onup>
                 <onup>602</onup>
