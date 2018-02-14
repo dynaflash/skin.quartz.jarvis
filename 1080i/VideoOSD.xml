@@ -144,8 +144,8 @@
                 <control type="button" id="605">
                     <visible>VideoPlayer.Content(LiveTV)</visible>
                     <posx>960</posx>
-                    <width>52</width>
-                    <height>30</height>
+                    <width>55</width>
+                    <height>33</height>
                     <texturenofocus>OSDControls/OSDChannelUp.png</texturenofocus>
                     <texturefocus colordiffuse="HL">OSDControls/OSDChannelUp.png</texturefocus>
                     <onleft>604</onleft>
@@ -171,9 +171,9 @@
 
                 <control type="button" id="606">
                     <visible>VideoPlayer.Content(LiveTV)</visible>
-                    <posx>1070</posx>
-                    <width>54</width>
-                    <height>30</height>
+                    <posx>1055</posx>
+                    <width>60</width>
+                    <height>33</height>
                     <texturenofocus>OSDControls/OSDEpg.png</texturenofocus>
                     <texturefocus colordiffuse="HL">OSDControls/OSDEpg.png</texturefocus>
                     <onleft>605</onleft>
@@ -183,14 +183,29 @@
                     <onclick>ActivateWindow(PVROSDGuide)</onclick>
                 </control>
 
-                <!-- Info Control -->
+                <!-- Record Control -->
                 <control type="button" id="607">
-                    <posx>1190</posx>
-                    <width>12</width>
-                    <height>30</height>
+                    <enable>Player.CanRecord</enable>
+                    <visible>VideoPlayer.Content(LiveTV)</visible>
+                    <posx>1140</posx>
+                    <width>35</width>
+                    <height>35</height>
+                    <texturenofocus>OSDControls/OSDRecord.png</texturenofocus>
+                    <texturefocus colordiffuse="Red">OSDControls/OSDRecord.png</texturefocus>
+                    <onleft>606</onleft>
+                    <onright>608</onright>
+                    <onup>607</onup>
+                    <onclick>PlayerControl(Record)</onclick>
+                </control>
+
+                <!-- Info Control -->
+                <control type="button" id="608">
+                    <posx>1200</posx>
+                    <width>13</width>
+                    <height>33</height>
                     <texturenofocus>OSDControls/OSDInfo.png</texturenofocus>
                     <texturefocus colordiffuse="HL">OSDControls/OSDInfo.png</texturefocus>
-                    <onleft>606</onleft>
+                    <onleft>607</onleft>
                     <onright>608</onright>
                     <onup>607</onup>
                     <onclick>ActivateWindow(fullscreeninfo)</onclick>
@@ -198,17 +213,18 @@
 
                 <!-- Options Control -->
                 <control type="button" id="608">
-                    <posx>1270</posx>
+                    <posx>1280</posx>
                     <width>61</width>
                     <height>40</height>
                     <aligny>bottom</aligny>
                     <texturenofocus>OSDControls/OSDOptions.png</texturenofocus>
                     <texturefocus colordiffuse="HL">OSDControls/OSDOptions.png</texturefocus>
                     <onleft>607</onleft>
-                    <onright>608</onright>
+                    <onright>609</onright>
                     <onup>608</onup>
                     <onclick allowhiddenfocus="true">Control.SetFocus(101)</onclick>
                 </control>
+
 
         </control>
         <control type="grouplist">
