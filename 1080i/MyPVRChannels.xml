@@ -15,6 +15,26 @@
             <animation effect="fade" delay="100" time="300">Visible</animation>
             <animation effect="fade" time="0">Hidden</animation>
 
+            <control type="group" description="Top Channels Header">
+                <posx>1025</posx>
+                <posy>55</posy>
+                <control type="label">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>888</width>
+                    <font>size22</font>
+                    <textcolor>HL</textcolor>
+                    <label>$INFO[PVR.BackendChannels,, Channels]</label>
+                </control>
+                <control type="image" description="Bottom split">
+                    <posx>0</posx>
+                    <posy>65</posy>
+                    <width>888</width>
+                    <height>1</height>
+                    <texture>img/LineST.png</texture>
+                </control>
+            </control>
+
             <!-- Left side with video preview and chosen list information -->
             <control type="group" description="Left Panel TV Channels group">
                 <visible>Control.IsVisible(50)</visible>
@@ -85,38 +105,7 @@
                         <posy>80</posy>
                         <width>760</width>
                         <height>4</height>
-
-                        <!-- Test some progress bars Notes Here:
-                        <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
-                        <midtexture border="0,0,0,0">VideoOSD/BufferMidd.png</midtexture>
-
-                        ProgressLeft.png
-                        ProgressRight.png
-                    -->
-                    <!-- Some textures from the video osd
-
-                    VideoProgressBG.png
-                    VideoOSD/BufferMidd.png
-                    VideoOSD/VideoProgressBG.png
-                    VideoOSD/ProgressRealBG.png
-                    VideoOSD/VideoProgressMidd.png
-                    VideoOSD/VideoProgressLeft.png
-                    VideoOSD/VideoProgressFill.png
-                    HUD/ProgressBackground.png
-                    controls/ProgressBackground.png
-                    controls/Slider.png
-                    controls/ProgressMid.png
-
-
-                    <texturebg>img/ItemBG.png</texturebg>
-                    <midtexture>img/ItemBG2.png</midtexture>
-                    img/BlackDot.png
-                    <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
-                    <midtexture border="0,0,0,0">VideoOSD/BufferMidd.png</midtexture>
-
-                    -->
-                    <!--<aspectratio>stretch</aspectratio>-->
-                    <reveal>false</reveal>
+                        <reveal>false</reveal>
                         <texturebg border="0,0,0,0">VideoOSD/VideoProgressBG.png</texturebg>
                         <lefttexture border="0,0,0,0">img/WhiteDot.png</lefttexture>
                         <midtexture border="0,0,0,0">img/WhiteDot.png</midtexture>
@@ -206,7 +195,7 @@
                                 <width>100</width>
                                 <align>center</align>
                                 <aligny>center</aligny>
-                                <texture>$INFO[ListItem.Thumb]</texture>
+                                <texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
                                 <aspectratio>keep</aspectratio>
                             </control>
 
@@ -272,7 +261,7 @@
                             <width>100</width>
                             <align>center</align>
                             <aligny>center</aligny>
-                            <texture>$INFO[ListItem.Thumb]</texture>
+                            <texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
                             <aspectratio>keep</aspectratio>
                         </control>
                         <control type="label" description="Main Label">
@@ -301,7 +290,7 @@
                     </focusedlayout>
                 </control>
 
-                <include>LargeListSlider</include>
+            <include>LargeListSlider</include>
 
             </control>
 
