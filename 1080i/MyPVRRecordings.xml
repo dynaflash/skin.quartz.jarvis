@@ -1,231 +1,263 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-	<defaultcontrol>50</defaultcontrol>
-	<onload>SetProperty(Window.HasSettings,True,home)</onload>
-	<onload>ClearProperty(MediaMenu,Home)</onload>
-	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<allowoverlay>no</allowoverlay>
-	<menucontrol>9051</menucontrol>
-	<controls>
-		<include>CommonBackground</include>
-		<control type="group">
-			<description>Recordings group</description>
-			<visible>Control.IsVisible(50)</visible>
-			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0">WindowOpen</animation>
-			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0">WindowClose</animation>
-			<include>ViewAnimation</include>
-			<left>100</left>
-			<top>-40</top>
-			<control type="image">
-				<description>background image</description>
-				<left>-32</left>
-				<top>1020</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture border="40">panel_reflect.png</texture>
-			</control>
-			<control type="image">
-				<description>background image</description>
-				<left>-32</left>
-				<top>148</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
-			<control type="list" id="50">
-				<left>0</left>
-				<top>180</top>
-				<width>1140</width>
-				<height>840</height>
-				<onleft>SetProperty(MediaMenu,True,home)</onleft>
-				<onleft>SetFocus(9050)</onleft>
-				<onright>72</onright>
-				<onup>50</onup>
-				<ondown>50</ondown>
-				<viewtype label="535">list</viewtype>
-				<pagecontrol>72</pagecontrol>
-				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="120" width="1140">
-					<control type="image">
-						<top>62</top>
-						<width>1140</width>
-						<height>60</height>
-						<texture border="1">separator2.png</texture>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="IsEmpty(ListItem.Thumb)">Conditional</animation>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>0</top>
-						<width>960</width>
-						<height>70</height>
-						<font>font30</font>
-						<textcolor>grey2</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>790</width>
-						<height>60</height>
-						<font>font15</font>
-						<textcolor>grey3</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Plot]</label>
-					</control>
-					<control type="label">
-						<left>100</left>
-						<width>960</width>
-						<height>120</height>
-						<font>font15</font>
-						<align>right</align>
-						<textcolor>grey2</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label2]</label>
-					</control>
-					<control type="image">
-						<left>1076</left>
-						<top>28</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture>$VAR[ListItem.Overlay]</texture>
-					</control>
-				</itemlayout>
-				<focusedlayout height="120" width="1140">
-					<control type="image">
-						<top>62</top>
-						<width>1140</width>
-						<height>60</height>
-						<texture border="1">separator2.png</texture>
-					</control>
-					<control type="image">
-						<left>0</left>
-						<top>0</top>
-						<width>1140</width>
-						<height>120</height>
-						<texture border="4">listselect_fo.png</texture>
-						<visible>Control.HasFocus(50)</visible>
-						<include>VisibleFadeEffect</include>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>0</top>
-						<width>960</width>
-						<height>70</height>
-						<font>font30</font>
-						<textcolor>white</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>790</width>
-						<height>60</height>
-						<font>font15</font>
-						<textcolor>white</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Plot]</label>
-						<animation effect="fade" start="100" end="30" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
-					</control>
-					<control type="label">
-						<left>100</left>
-						<width>960</width>
-						<height>120</height>
-						<font>font15</font>
-						<align>right</align>
-						<textcolor>white</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label2]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
-					</control>
-					<control type="image">
-						<left>1076</left>
-						<top>28</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture>$VAR[ListItem.Overlay]</texture>
-					</control>
-				</focusedlayout>
-			</control>
-			<control type="scrollbar" id="72">
-				<left>1140</left>
-				<top>180</top>
-				<width>14</width>
-				<height>840</height>
-				<onleft>50</onleft>
-				<onright>SetProperty(MediaMenu,True,home)</onright>
-				<onright>SetFocus(9050)</onright>
-				<texturesliderbackground>-</texturesliderbackground>
-				<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
-				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
-				<showonepage>false</showonepage>
-				<orientation>vertical</orientation>
-			</control>
-			<control type="group">
-				<left>1196</left>
-				<top>195</top>
-				<control type="image">
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<top>795</top>
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="top">keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" fallback="DefaultVideo.png" background="true">$INFO[Container(50).ListItem.Icon]</texture>
-					<bordersize>20</bordersize>
-				</control>
-			</control>
-		</control>
-		<include>ScrollOffsetLabel</include>
-		<control type="image">
-			<left>0</left>
-			<top>0</top>
-			<width>FullScreenWidth</width>
-			<height>1080</height>
-			<texture>black-back.png</texture>
-			<animation effect="fade" time="400">Visible</animation>
-			<animation effect="fade" time="200">Hidden</animation>
-			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>
-		</control>
-		<include>Topbar</include>
-		<include>PVRMediaMenu</include>
-	</controls>
+    <defaultcontrol>50</defaultcontrol>
+    <allowoverlay>no</allowoverlay>
+    <menucontrol>9051</menucontrol>
+    <controls>
+        <!--<include>CommonBackground</include>-->
+        <include>FullBackground</include>
+        <include>MediaHeader</include>
+        <control type="group">
+
+            <control type="group" description="Top Recordings Header">
+                <posx>1025</posx>
+                <posy>55</posy>
+                <control type="label">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>888</width>
+                    <font>size22</font>
+                    <textcolor>HL</textcolor>
+                    <label>$INFO[PVR.BackendRecordings,, Recordings -] $INFO[PVR.BackendDiskspace,, space]</label>
+                </control>
+                <control type="image" description="Bottom split">
+                    <posx>0</posx>
+                    <posy>65</posy>
+                    <width>888</width>
+                    <height>1</height>
+                    <texture>img/LineST.png</texture>
+                </control>
+            </control>
+
+
+            <description>Recordings group</description>
+            <visible>Control.IsVisible(50)</visible>
+
+            <!-- Video Window on the left (taken from MyPVRChannels) -->
+
+            <control type="group">
+                <posx>112</posx>
+                <posy>120</posy>
+                <!-- Can use default tv background image instead of thumbs -->
+                <control type="image" description="ChannelLogo">
+                    <visible>!Player.HasVideo</visible>
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>640</width>
+                    <height>360</height>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <texture fallback="special://skin/backgrounds/tv.jpg">$INFO[ListItem.thumb]</texture>
+                    <aspectratio>keep</aspectratio>
+                    <include>VisibleFadeEffect</include>
+                </control>
+                <control type="videowindow">
+                    <visible>Player.HasVideo</visible>
+                    <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>640</width>
+                    <height>360</height>
+                </control>
+                <control type="image" description="Current video label background">
+                    <visible>Player.HasVideo</visible>
+                    <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+                    <left>0</left>
+                    <top>280</top>
+                    <width>640</width>
+                    <height>40</height>
+                    <texture>img/BlackDot.png</texture>
+                    <colordiffuse>DDFFFFFF</colordiffuse>
+                </control>
+                <control type="textbox" description="Current video label">
+                    <visible>Player.HasVideo</visible>
+                    <animation effect="fade" tween="cubic" easing="inout" time="2400">Visible</animation>
+                    <left>0</left>
+                    <top>280</top>
+                    <width>640</width>
+                    <height>40</height>
+                    <font>Details</font>
+                    <align>center</align>
+                    <textcolor>White</textcolor>
+                    <autoscroll delay="3000" time="3000" repeat="3000">true</autoscroll>
+                    <label>Now Playing: $INFO[Player.Title]</label>
+                </control>
+            </control>
+
+
+            <control type="group">
+                <posx>112</posx>
+                <posy>540</posy>
+                <control type="label" description="Chosen Title">
+                    <posy>0</posy>
+                    <width>762</width>
+                    <font>size22B</font>
+                    <textcolor>HL</textcolor>
+                    <label>$INFO[ListItem.ChannelName,,: ]$INFO[ListItem.Title]</label>
+                </control>
+
+                <control type="label" description="Recorded Date">
+                    <posy>60</posy>
+                    <font>size20</font>
+                    <textcolor>White</textcolor>
+                    <label>Recorded: $INFO[ListItem.Date]</label>
+                </control>
+
+                <control type="textbox" description="Plot Value for TV">
+                    <posy>140</posy>
+                    <width>758</width>
+                    <height>240</height>
+                    <font>size20</font>
+                    <textcolor>White</textcolor>
+                    <align>justify</align>
+                    <aligny>bottom</aligny>
+                    <autoscroll delay="8000" time="4300" repeat="10000">true</autoscroll>
+                    <pagecontrol>-</pagecontrol>
+                    <label>$INFO[ListItem.Plot]</label>
+                </control>
+
+            </control>
+
+
+            <!--END left content for now playing video or chosen items from list on right -->
+
+            <!-- List Slider on the right -->
+            <control type="group" description="Slider and List">
+                <include>LargeListItemCount</include>
+                <posx>1020</posx>
+                <posy>141</posy>
+                <control type="fixedlist" id="50" description="Channel List">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>802</width>
+                    <height>888</height>
+                    <onleft condition="!Skin.HasSetting(ViewOptions_Hide)">9000</onleft>
+                    <onright condition="Skin.HasSetting(Scrollbars_Active)">70</onright>
+                    <onright condition="!Skin.HasSetting(Scrollbars_Active)">9000</onright>
+                    <onup>50</onup>
+                    <ondown>50</ondown>
+                    <pagecontrol>70</pagecontrol>
+                    <viewtype label="537">Big List 11</viewtype>
+                    <focusposition>3</focusposition>
+                    <movement>4</movement>
+                    <itemlayout width="802" height="111">
+                        <control type="image">
+                            <left>15</left>
+                            <top>8</top>
+                            <width>105</width>
+                            <height>105</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true" fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
+                        </control>
+                        <control type="label">
+                            <left>135</left>
+                            <top>0</top>
+                            <width>960</width>
+                            <height>70</height>
+                            <font>font30</font>
+                            <textcolor>grey2</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.ChannelName,,: ] $INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="label">
+                            <left>135</left>
+                            <top>55</top>
+                            <width>790</width>
+                            <height>60</height>
+                            <font>font15</font>
+                            <textcolor>grey3</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>Recorded: $INFO[ListItem.Date]</label>
+                        </control>
+                        <control type="label">
+                            <left>100</left>
+                            <width>960</width>
+                            <height>120</height>
+                            <font>font15</font>
+                            <align>right</align>
+                            <textcolor>grey2</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Label2]</label>
+                        </control>
+                        <control type="image">
+                            <left>1076</left>
+                            <top>28</top>
+                            <width>64</width>
+                            <height>64</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture>$VAR[ListItem.Overlay]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="802" height="111">
+                        <control type="image">
+                            <left>15</left>
+                            <top>8</top>
+                            <width>105</width>
+                            <height>105</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true" fallback="OSD/VideoSettings.png">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="label">
+                            <left>135</left>
+                            <top>0</top>
+                            <width>960</width>
+                            <height>70</height>
+                            <font>font30</font>
+                            <textcolor>HL</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.ChannelName,,: ] $INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="label">
+                            <left>135</left>
+                            <top>55</top>
+                            <width>790</width>
+                            <height>60</height>
+                            <font>font15</font>
+                            <textcolor>HL</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>Recorded: $INFO[ListItem.Date]</label>
+                        </control>
+                        <control type="label">
+                            <left>100</left>
+                            <width>960</width>
+                            <height>120</height>
+                            <font>font15</font>
+                            <align>right</align>
+                            <textcolor>HL</textcolor>
+                            <selectedcolor>HL</selectedcolor>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Label2]</label>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                        <control type="image">
+                            <left>1076</left>
+                            <top>28</top>
+                            <width>64</width>
+                            <height>64</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture>$VAR[ListItem.Overlay]</texture>
+                        </control>
+                    </focusedlayout>
+
+                </control>
+                <include>LargeListSlider</include>
+                <control type="scrollbar" id="70">
+                    <posx>39r</posx>
+                    <posy>135</posy>
+                    <height>870</height>
+                    <onleft>50</onleft>
+                    <onright>32</onright>
+                </control>
+            </control>
+        </control>
+    </controls>
 </window>
