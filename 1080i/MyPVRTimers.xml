@@ -1,206 +1,245 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol>50</defaultcontrol>
-	<onload>SetProperty(Window.HasSettings,True,home)</onload>
-	<onload>ClearProperty(MediaMenu,Home)</onload>
-	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<allowoverlay>no</allowoverlay>
 	<views>50</views>
 	<controls>
-		<include>CommonBackground</include>
+        <include>FullBackground</include>
+        <include>MediaHeader</include>
 		<control type="group">
 			<description>Timers group</description>
 			<visible>Control.IsVisible(50)</visible>
-			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0">WindowOpen</animation>
-			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0">WindowClose</animation>
-			<include>ViewAnimation</include>
-			<left>100</left>
-			<top>-40</top>
-			<control type="image">
-				<description>background image</description>
-				<left>-32</left>
-				<top>1020</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture border="40">panel_reflect.png</texture>
-			</control>
-			<control type="image">
-				<description>background image</description>
-				<left>-32</left>
-				<top>148</top>
-				<width>1204</width>
-				<height>904</height>
-				<texture border="40">listpanel_back.png</texture>
-			</control>
-			<control type="list" id="50">
-				<left>0</left>
-				<top>180</top>
-				<width>1140</width>
-				<height>840</height>
-				<onleft>SetProperty(MediaMenu,True,home)</onleft>
-				<onleft>SetFocus(9050)</onleft>
-				<onright>72</onright>
-				<onup>50</onup>
-				<ondown>50</ondown>
-				<viewtype label="535">list</viewtype>
-				<pagecontrol>72</pagecontrol>
-				<scrolltime tween="quadratic">200</scrolltime>
-				<itemlayout height="120" width="1140">
-					<control type="image">
-						<top>62</top>
-						<width>1140</width>
-						<height>60</height>
-						<texture border="1">separator2.png</texture>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<colordiffuse>88FFFFFF</colordiffuse>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>0</top>
-						<width>950</width>
-						<height>70</height>
-						<font>font30</font>
-						<textcolor>grey2</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>950</width>
-						<height>60</height>
-						<font>font15</font>
-						<textcolor>grey3</textcolor>
-						<selectedcolor>selected</selectedcolor>
-						<align>left</align>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Date]</label>
-					</control>
-					<control type="image">
-						<left>1076</left>
-						<top>28</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture>overlays/list/OverlayUnwatched.png</texture>
-					</control>
-					<control type="group">
-						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
-						<left>1017</left>
-						<control type="label">
-							<top>44</top>
-							<width>120</width>
-							<height>30</height>
-							<font>IconTiny</font>
-							<textoffsetx>15</textoffsetx>
-							<textcolor>grey2</textcolor>
-							<align>right</align>
-							<selectedcolor>selected</selectedcolor>
-							<label></label>
-							<visible>ListItem.HasTimer</visible>
-						</control>
-						<control type="label">
-							<top>44</top>
-							<width>120</width>
-							<height>30</height>
-							<font>IconTiny</font>
-							<textoffsetx>15</textoffsetx>
-							<textcolor>red</textcolor>
-							<align>right</align>
-							<selectedcolor>selected</selectedcolor>
-							<label></label>
-							<visible>ListItem.IsRecording</visible>
-						</control>
-					</control>
-				</itemlayout>
-				<focusedlayout height="120" width="1140">
-					<control type="image">
-						<top>62</top>
-						<width>1140</width>
-						<height>60</height>
-						<texture border="1">separator2.png</texture>
-					</control>
-					<control type="image">
-						<width>1140</width>
-						<height>120</height>
-						<texture border="4">listselect_fo.png</texture>
-						<visible>Control.HasFocus(50)</visible>
-						<include>VisibleFadeEffect</include>
-					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>0</top>
-						<width>950</width>
-						<height>70</height>
-						<font>font30</font>
-						<selectedcolor>selected</selectedcolor>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Label]</label>
-					</control>
-					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>950</width>
-						<height>60</height>
-						<font>font15</font>
-						<selectedcolor>selected</selectedcolor>
-						<aligny>center</aligny>
-						<label>$INFO[ListItem.Date]</label>
-					</control>
-					<control type="image">
-						<left>1076</left>
-						<top>28</top>
-						<width>64</width>
-						<height>64</height>
-						<aspectratio>keep</aspectratio>
-						<texture>overlays/list/OverlayUnwatched.png</texture>
-					</control>
-					<control type="group">
-						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
-						<left>1017</left>
-						<control type="label">
-							<top>44</top>
-							<width>120</width>
-							<height>30</height>
-							<font>IconTiny</font>
-							<textoffsetx>15</textoffsetx>
-							<align>right</align>
-							<selectedcolor>selected</selectedcolor>
-							<label></label>
-							<visible>ListItem.HasTimer</visible>
-						</control>
-						<control type="label">
-							<top>44</top>
-							<width>120</width>
-							<height>30</height>
-							<font>IconTiny</font>
-							<textoffsetx>15</textoffsetx>
-							<textcolor>red</textcolor>
-							<align>right</align>
-							<selectedcolor>selected</selectedcolor>
-							<label></label>
-							<visible>ListItem.IsRecording</visible>
-						</control>
-					</control>
-				</focusedlayout>
-			</control>
+
+            <control type="group" description="Top Timers Header">
+                <posx>60</posx>
+                <posy>55</posy>
+                <control type="label">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>888</width>
+                    <font>size22</font>
+                    <textcolor>HL</textcolor>
+                    <label>$INFO[PVR.BackendTimers,, Timers -] $INFO[PVR.BackendDiskspace,, space]</label>
+                </control>
+                <control type="image" description="Bottom split">
+                    <posx>0</posx>
+                    <posy>65</posy>
+                    <width>888</width>
+                    <height>1</height>
+                    <texture>img/LineST.png</texture>
+                </control>
+            </control>
+<!-- Playing Video / Icon window -->
+<control type="group">
+    <posx>112</posx>
+    <posy>140</posy>
+    <!-- Can use default tv background image instead of thumbs -->
+    <control type="image" description="ChannelLogo">
+        <visible>!Player.HasVideo</visible>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>640</width>
+        <height>360</height>
+        <align>center</align>
+        <aligny>center</aligny>
+        <texture fallback="special://skin/backgrounds/tv.jpg">$INFO[ListItem.thumb]</texture>
+        <aspectratio>keep</aspectratio>
+        <include>VisibleFadeEffect</include>
+    </control>
+    <control type="videowindow">
+        <visible>Player.HasVideo</visible>
+        <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+        <posx>0</posx>
+        <posy>0</posy>
+        <width>640</width>
+        <height>360</height>
+    </control>
+    <control type="image" description="Current video label background">
+        <visible>Player.HasVideo</visible>
+        <animation effect="fade" tween="cubic" easing="in" time="2400">Visible</animation>
+        <left>0</left>
+        <top>280</top>
+        <width>640</width>
+        <height>40</height>
+        <texture>img/BlackDot.png</texture>
+        <colordiffuse>DDFFFFFF</colordiffuse>
+    </control>
+    <control type="textbox" description="Current video label">
+        <visible>Player.HasVideo</visible>
+        <animation effect="fade" tween="cubic" easing="inout" time="2400">Visible</animation>
+        <left>0</left>
+        <top>280</top>
+        <width>640</width>
+        <height>40</height>
+        <font>Details</font>
+        <align>center</align>
+        <textcolor>White</textcolor>
+        <autoscroll delay="3000" time="3000" repeat="3000">true</autoscroll>
+        <label>Now Playing: $INFO[Player.Title]</label>
+    </control>
+</control>
+
+
+
+            <control type="group"  description="Actual Timer Display including Header">
+                <posx>60</posx>
+                <posy>540</posy>
+                <!-- Start Header -->
+                <control type="group" description="Header">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <control type="image" description="split">
+                        <posx>0</posx>
+                        <posy>39</posy>
+                        <width>1800</width>
+                        <height>2</height>
+                        <texture>img/LineST.png</texture>
+                    </control>
+                    <control type="label">
+                        <description>Title header label</description>
+                        <posx>20</posx>
+                        <posy>0</posy>
+                        <width>450</width>
+                        <height>30</height>
+                        <label>$LOCALIZE[369]</label>
+                    </control>
+                    <control type="label">
+                        <description>Schedule Time header label</description>
+                        <posx>520</posx>
+                        <posy>0</posy>
+                        <width>550</width>
+                        <height>30</height>
+                        <label>$LOCALIZE[31501]</label>
+                    </control>
+                    <control type="label">
+                        <description>Channel header label</description>
+                        <posx>1120</posx>
+                        <posy>0</posy>
+                        <width>380</width>
+                        <height>30</height>
+                        <label>$LOCALIZE[19029]</label>
+                    </control>
+                    <control type="label">
+                        <description>Status header label</description>
+                        <posx>1520</posx>
+                        <posy>0</posy>
+                        <width>280</width>
+                        <height>30</height>
+                        <label>$LOCALIZE[126]</label>
+                    </control>
+                </control>
+                <!-- End Headers -->
+
+                <control type="list" id="50">
+                    <posx>0</posx>
+                    <posy>80</posy>
+                    <width>1800</width>
+                    <height>468</height>
+                    <scrolltime>350</scrolltime>
+                    <onleft>SetFocus(9050)</onleft>
+                    <onright>72</onright>
+                    <onup>50</onup>
+                    <ondown>50</ondown>
+                    <viewtype label="535">list</viewtype>
+                    <pagecontrol>72</pagecontrol>
+                    <scrolltime tween="quadratic">200</scrolltime>
+                    <itemlayout height="78">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <height>78</height>
+                            <width>1800</width>
+                            <texture border="3">list/ListNF.png</texture>
+                        </control>
+                        <control type="label" description="Timer label">
+                            <posx>10</posx>
+                            <posy>0</posy>
+                            <width>480</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.Label</info>
+                        </control>
+                        <control type="label" description="Date">
+                            <posx>510</posx>
+                            <posy>0</posy>
+                            <width>580</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.Date</info>
+                        </control>
+                        <control type="label" description="Channel label">
+                            <posx>1110</posx>
+                            <posy>0</posy>
+                            <width>380</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.ChannelName</info>
+                        </control>
+                        <control type="label" description="Comment">
+                            <posx>1510</posx>
+                            <posy>0</posy>
+                            <width>280</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <font>ListDetails</font>
+                            <info>ListItem.Comment</info>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="78">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <height>78</height>
+                            <width>1800</width>
+                            <texture border="3">list/ListNF.png</texture>
+                        </control>
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>3</posy>
+                            <width>1800</width>
+                            <height>78</height>        <!--<texture border="4">img/SettingsButtonFO.png</texture>-->
+                            <texture border="2">img/MediaButton2.png</texture>
+                            <!--<texture border="9">img/MediaButton.png</texture>
+                            <texture border="9">img/MediaItemBG2.png</texture>-->
+                            <aspectratio>stretch</aspectratio>
+
+
+                        </control>
+                        <control type="label" description="Timer label">
+                            <posx>10</posx>
+                            <posy>0</posy>
+                            <width>480</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.Label</info>
+                        </control>
+                        <control type="label" description="Date">
+                            <posx>510</posx>
+                            <posy>0</posy>
+                            <width>580</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.Date</info>
+                        </control>
+                        <control type="label" description="Channel label">
+                            <posx>1110</posx>
+                            <posy>0</posy>
+                            <width>380</width>
+                            <height>78</height>
+                            <scroll>false</scroll>
+                            <info>ListItem.ChannelName</info>
+                        </control>
+                        <control type="label" description="Comment">
+                            <posx>1510</posx>
+                            <posy>0</posy>
+                            <width>280</width>
+                            <height>78</height>
+                            <font>ListDetails</font>
+                            <scroll>false</scroll>
+                            <info>ListItem.Comment</info>
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
 			<control type="scrollbar" id="72">
 				<left>1140</left>
 				<top>180</top>
@@ -215,41 +254,8 @@
 				<showonepage>false</showonepage>
 				<orientation>vertical</orientation>
 			</control>
-			<control type="group">
-				<left>1196</left>
-				<top>195</top>
-				<control type="image">
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<top>795</top>
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="top">keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" fallback="DefaultVideo.png" background="true">$INFO[Container(50).ListItem.Icon]</texture>
-					<bordersize>20</bordersize>
-				</control>
-			</control>
+
 		</control>
-		<include>ScrollOffsetLabel</include>
-		<control type="image">
-			<left>0</left>
-			<top>0</top>
-			<width>FullScreenWidth</width>
-			<height>1080</height>
-			<texture>black-back.png</texture>
-			<animation effect="fade" time="400">Visible</animation>
-			<animation effect="fade" time="200">Hidden</animation>
-			<visible>Window.IsActive(FileBrowser) | Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo) | Window.IsActive(PVRTimerSetting) | Window.IsActive(PVRGroupManager) | Window.IsActive(PVRGuideSearch)</visible>
-		</control>
-		<include>Topbar</include>
-		<include>PVRMediaMenu</include>
+
 	</controls>
 </window>

@@ -4,7 +4,6 @@
     <allowoverlay>no</allowoverlay>
     <menucontrol>9051</menucontrol>
     <controls>
-        <!--<include>CommonBackground</include>-->
         <include>FullBackground</include>
         <include>MediaHeader</include>
         <control type="group">
