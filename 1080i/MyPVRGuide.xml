@@ -54,13 +54,14 @@
                 <!-- Not playing live tv: show focused channel Icon -->
                 <control type="image" description="TV Logo">
                     <visible>!VideoPlayer.Content(LiveTV)</visible>
-                    <posx>100</posx>
+                    <posx>0</posx>
                     <posy>20</posy>
                     <align>center</align>
                     <aligny>top</aligny>
                     <width>240</width>
                     <height>200</height>
-                    <texture>$INFO[ListItem.Icon]</texture>
+                    <aspect>keep</aspect>
+                    <texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Icon]</texture>
                     <aspectratio>keep</aspectratio>
                 </control>
             </control>
