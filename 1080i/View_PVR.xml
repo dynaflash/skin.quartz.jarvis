@@ -109,7 +109,7 @@
 							<posy>14</posy>
 							<height>84</height>
 							<width>84</width>
-							<texture>$INFO[ListItem.Thumb]</texture>
+							<texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
 							<aspectratio>keep</aspectratio>
 						</control>
 						<control type="label" description="Number">
@@ -614,7 +614,7 @@
 						<width>48</width>
 						<height>78</height>
 						<aspectratio align="center" aligny="center">keep</aspectratio>
-						<texture>$INFO[ListItem.Thumb]</texture>
+						<texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 				</channellayout>
 				<focusedchannellayout height="78" width="420">
@@ -666,7 +666,7 @@
 						<width>48</width>
 						<height>78</height>
 						<aspectratio align="center" aligny="center">keep</aspectratio>
-						<texture>$INFO[ListItem.Thumb]</texture>
+						<texture fallback="OSD/VideoSettings.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 				</focusedchannellayout>
 				<itemlayout height="78" width="60">
