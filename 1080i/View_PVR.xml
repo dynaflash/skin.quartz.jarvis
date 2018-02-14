@@ -565,7 +565,6 @@
 						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</rulerlayout>
-                <!-- Progress line taken from Amber -->
                 <progresstexture border="0,96,18,14">img/EPGMarker.png</progresstexture>
 				<channellayout height="78" width="420">
 					<control type="image" id="1" description="Column 1">
@@ -700,15 +699,14 @@
 						<aspectratio>keep</aspectratio>
 					</control>
 				</itemlayout>
-				<focusedlayout height="78" width="60">
-					<control type="image" id="2" description="row">
-						<posx>1</posx>
-						<posy>3</posy>
-						<width>57</width>
-						<height>72</height>
-						<texture border="3">img/SettingsButtonFO.png</texture>
-
-					</control>
+                <focusedlayout height="78" width="60">
+                    <control type="image" id="2" description="row">
+                        <posx>1</posx>
+                        <posy>3</posy>
+                        <width>57</width>
+                        <height>72</height>
+                        <texture border="3">img/SettingsButtonFO.png</texture>
+                    </control>
 					<control type="label" id="1">
 						<posx>8</posx>
 						<posy>0</posy>

@@ -104,24 +104,23 @@
             </animation>
             <control type="image">
                 <posx>0</posx>
-                <posy>975</posy>
+                <posy>975</posy><!-- Was 975 -->
                 <width>1920</width>
-                <height>225</height>
+                <height>225</height><!-- Was 225 -->
                 <aspectratio>stretch</aspectratio>
                 <texture>OSD/OSDBackground.png</texture>
             </control>
         </control>
         <control type="group">
-            <posy>1014
-            </posy>            <!--<control type="image" description="Real Background">              <posx>299</posx>              <posy>6</posy>              <width>1407</width>              <height>24</height>              <texture border="15,1,15,1">VideoOSD/ProgressRealBG.png</texture>            </control>-->            <!--<control type="progress" description="Buffer Bar">              <posx>303</posx>              <posy>10</posy>              <width>1398</width>              <height>17</height>              <texturebg border="6">VideoOSD/VideoProgressBG.png</texturebg>              <midtexture border="0,6,1,6">VideoOSD/BufferMidd.png</midtexture>              <lefttexture border="6,6,0,6">VideoOSD/BufferLeft.png</lefttexture>              <righttexture border="0,6,12,6">VideoOSD/BufferRight.png</righttexture>              <info>Player.CacheLevel</info>              <visible>Player.Caching</visible>            </control>            <control type="progress" description="Cache Progress">              <visible>false</visible>              <posx>303</posx>              <posy>10</posy>              <width>1398</width>              <height>17</height>              <texturebg border="6">VideoOSD/VideoProgressBG.png</texturebg>              <midtexture border="0,6,1,6">VideoOSD/BufferMidd.png</midtexture>              <lefttexture border="6,6,0,6">VideoOSD/BufferLeft.png</lefttexture>              <righttexture border="0,6,12,6">VideoOSD/BufferRight.png</righttexture>              <info>Player.ProgressCache</info>            </control>-->
-            <control type="progress" id="23">
-                <posx>300</posx>
-                <posy>3</posy>
-                <width>1200</width>
-                <height>24</height>
-                <info>Player.Progress</info>
-
-            </control>
+            <posy>1014</posy>
+                        <!--<control type="image" description="Real Background">              <posx>299</posx>              <posy>6</posy>              <width>1407</width>              <height>24</height>              <texture border="15,1,15,1">VideoOSD/ProgressRealBG.png</texture>            </control>-->            <!--<control type="progress" description="Buffer Bar">              <posx>303</posx>              <posy>10</posy>              <width>1398</width>              <height>17</height>              <texturebg border="6">VideoOSD/VideoProgressBG.png</texturebg>              <midtexture border="0,6,1,6">VideoOSD/BufferMidd.png</midtexture>              <lefttexture border="6,6,0,6">VideoOSD/BufferLeft.png</lefttexture>              <righttexture border="0,6,12,6">VideoOSD/BufferRight.png</righttexture>              <info>Player.CacheLevel</info>              <visible>Player.Caching</visible>            </control>            <control type="progress" description="Cache Progress">              <visible>false</visible>              <posx>303</posx>              <posy>10</posy>              <width>1398</width>              <height>17</height>              <texturebg border="6">VideoOSD/VideoProgressBG.png</texturebg>              <midtexture border="0,6,1,6">VideoOSD/BufferMidd.png</midtexture>              <lefttexture border="6,6,0,6">VideoOSD/BufferLeft.png</lefttexture>              <righttexture border="0,6,12,6">VideoOSD/BufferRight.png</righttexture>              <info>Player.ProgressCache</info>            </control>-->
+                        <control type="progress" id="23">
+                            <posx>300</posx>
+                            <posy>3</posy>
+                            <width>1200</width>
+                            <height>24</height>
+                            <info>Player.Progress</info>
+                        </control>
             <!-- Here we have the seeking progress (I Think) Once agan taken from Amber 0-->
             <control type="slider" id="401">
                 <description>Seek Slider</description>
