@@ -24,6 +24,7 @@
             <posx>90</posx>
             <posy>758</posy>
             <control type="group" id="101">
+                <defaultcontrol>603</defaultcontrol><!-- Default focus to stop -->
                 <posx>608</posx>
                 <posy>93r</posy>
 
@@ -31,76 +32,79 @@
                 Repeat is funky to say the least, we have an invisible control ID 1 that switches the graphics according to state,
                 No clue why we can't use 3 separate controls but Confluence and Amber do it this way and the other doesn't work
                 -->
-                <!-- Actual repeat button is "invisible"-->
-                <control type="button" id="1">
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <label>-</label>
-                    <texturefocus>-</texturefocus>
-                    <texturenofocus>-</texturenofocus>
-                    <onclick>PlayerControl(Repeat)</onclick>
-                    <onleft>11</onleft>
-                    <onright>600</onright>
-                    <onup>609</onup>
-                    <ondown>609</ondown>
-                    <visible>!VideoPlayer.Content(LiveTV)</visible>
-                </control>
+                <control type="group" description="Repeat Control">
+                    <posx>0</posx>
+                    <!-- Actual repeat button is "invisible"-->
+                    <control type="button" id="1">
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <label>-</label>
+                        <texturefocus>-</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Repeat)</onclick>
+                        <onleft>11</onleft>
+                        <onright>600</onright>
+                        <onup>609</onup>
+                        <ondown>Close</ondown>
+                        <visible>!VideoPlayer.Content(LiveTV)</visible>
+                    </control>
                 <!-- Now we switch our repeat icons depending on the focus of 1 above and playlist state-->
-                <control type="image">
-                    <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + !Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture>OSDControls/OSDRepeatOff.png</texture>
-                </control>
-                <control type="image">
-                    <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture colordiffuse="HL">OSDControls/OSDRepeatOff.png</texture>
-                </control>
-                <control type="image">
-                    <visible>Playlist.IsRepeatOne + !Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture>OSDControls/OSDRepeatOne.png</texture>
-                </control>
-                <control type="image">
-                    <visible>Playlist.IsRepeatOne + Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture colordiffuse="HL">OSDControls/OSDRepeatOne.png</texture>
-                </control>
-                <control type="image">
-                    <visible>Playlist.IsRepeat + !Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture>OSDControls/OSDRepeatAll.png</texture>
-                </control>
-                <control type="image">
-                    <visible>Playlist.IsRepeat + Control.HasFocus(1)</visible>
-                    <posx>30</posx>
-                    <posy>33</posy>
-                    <width>38</width>
-                    <height>30</height>
-                    <texture colordiffuse="HL">OSDControls/OSDRepeatAll.png</texture>
+                    <control type="image">
+                        <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + !Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture>OSDControls/OSDRepeatOff.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatOff.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeatOne + !Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture>OSDControls/OSDRepeatOne.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeatOne + Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatOne.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeat + !Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture>OSDControls/OSDRepeatAll.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeat + Control.HasFocus(1)</visible>
+                        <posx>0</posx>
+                        <posy>33</posy>
+                        <width>38</width>
+                        <height>30</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatAll.png</texture>
+                    </control>
                 </control>
                 <!-- End Repeat -->
-                
+                <!-- Skip Back -->
                 <control type="button" id="600">
-                    <posx>90</posx><!-- Was 60 -->
-                    <posy>33</posy><!-- Was 0 -->
+                    <posx>70</posx>
+                    <posy>33</posy>
                     <width>35</width>
                     <height>30</height>
                     <texturenofocus>OSDControls/OSDSkipBack.png</texturenofocus>
@@ -108,11 +112,13 @@
                     <onleft>1</onleft>
                     <onright>602</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Previous)</onclick>
                 </control>
                 <control type="button" id="601">
-                    <posx>145</posx>
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
+                    <posx>130</posx>
                     <posy>33</posy>
                     <width>54</width>
                     <height>30</height>
@@ -121,10 +127,13 @@
                     <onleft>600</onleft>
                     <onright>602</onright>
                     <onup>609</onup>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Rewind)</onclick>
                 </control>
                 <control type="togglebutton" id="602">
-                    <posx>215</posx>
+                    <enable>Player.PauseEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.PauseEnabled">Conditional</animation>
+                    <posx>210</posx>
                     <posy>32</posy>
                     <width>30</width>
                     <height>30</height>
@@ -136,11 +145,11 @@
                     <onleft>601</onleft>
                     <onright>603</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Play)</onclick>
                 </control>
                 <control type="button" id="603">
-                    <posx>260</posx>
+                    <posx>265</posx>
                     <posy>33</posy>
                     <width>30</width>
                     <height>30</height>
@@ -149,11 +158,13 @@
                     <onleft>602</onleft>
                     <onright>604</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Stop)</onclick>
                 </control>
                 <control type="button" id="604">
-                    <posx>310</posx>
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
+                    <posx>325</posx>
                     <posy>33</posy>
                     <width>54</width>
                     <height>30</height>
@@ -162,10 +173,11 @@
                     <onleft>603</onleft>
                     <onright>605</onright>
                     <onup>609</onup>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Forward)</onclick>
                 </control>
                 <control type="button" id="605">
-                    <posx>380</posx>
+                    <posx>410</posx>
                     <posy>33</posy>
                     <width>35</width>
                     <height>30</height>
@@ -174,18 +186,18 @@
                     <onleft>604</onleft>
                     <onright>21</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <onclick>PlayerControl(Next)</onclick>
                 </control>
                 <control type="togglebutton" id="21" description="Random">
-                    <posx>435</posx>
+                    <posx>475</posx>
                     <posy>34</posy>
                     <width>45</width>
                     <height>30</height>
                     <onleft>605</onleft>
                     <onright>608</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <texturefocus colordiffuse="HL">OSDControls/OSDRandomOff.png</texturefocus>
                     <texturenofocus>OSDControls/OSDRandomOff.png</texturenofocus>
                     <usealttexture>Playlist.IsRandom</usealttexture>
@@ -195,7 +207,7 @@
                 </control>
                 <!-- Go to currently playing music playlist (Queue) -->
                 <control type="button" id="608">
-                    <posx>515</posx>
+                    <posx>555</posx>
                     <posy>35</posy>
                     <width>33</width>
                     <height>30</height>
@@ -204,7 +216,7 @@
                     <onleft>21</onleft>
                     <onright>609</onright>
                     <onup>609</onup>
-                    <ondown>609</ondown>
+                    <ondown>Close</ondown>
                     <onclick>Close</onclick>
                     <onclick>ActivateWindow(MusicPlaylist)</onclick>
                 </control>
@@ -214,8 +226,8 @@
                     <posy>30</posy>
                     <onleft>608</onleft>
                     <onright>10</onright>
-                    <onup>602</onup>
-                    <ondown>602</ondown>
+                    <onup>609</onup>
+                    <ondown>Close</ondown>
                     <width>61</width>
                     <height>40</height>
                     <texturenofocus>OSDControls/OSDOptions.png</texturenofocus>

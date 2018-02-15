@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-    <defaultcontrol>602</defaultcontrol>
+    <defaultcontrol>603</defaultcontrol><!-- Stop Control for default -->
     <zorder>2</zorder>
     <controls>
         <control type="group" description="OSDMenu">
@@ -76,6 +76,7 @@
                         <!-- Rewind -->
                         <control type="button" id="601">
                             <enable>Player.SeekEnabled</enable>
+                            <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
                             <posx>685</posx>
                             <width>54</width>
                             <height>30</height>
@@ -89,6 +90,8 @@
                         </control>
                         <!-- Play/Pause -->
                         <control type="togglebutton" id="602">
+                            <enable>Player.PauseEnabled</enable>
+                            <animation effect="fade" start="100" end="50" time="75" condition="!Player.PauseEnabled">Conditional</animation>
                             <posx>765</posx>
                             <width>30</width>
                             <height>30</height>
@@ -119,6 +122,7 @@
                         <!-- Fast Forward -->
                         <control type="button" id="604">
                             <enable>Player.SeekEnabled</enable>
+                            <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
                             <posx>880</posx>
                             <width>54</width>
                             <height>30</height>
@@ -190,8 +194,9 @@
                         </control>
                         <!-- Record Control -->
                         <control type="button" id="607">
-                            <enable>Player.CanRecord</enable>
                             <visible>VideoPlayer.Content(LiveTV)</visible>
+                            <enable>Player.CanRecord</enable>
+                            <animation effect="fade" start="100" end="50" time="75" condition="!Player.CanRecord">Conditional</animation>
                             <posx>1145</posx>
                             <width>35</width>
                             <height>35</height>
