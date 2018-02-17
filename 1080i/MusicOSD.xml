@@ -103,6 +103,8 @@
                 <!-- End Repeat -->
                 <!-- Skip Back -->
                 <control type="button" id="600">
+                    <enable>MusicPlayer.HasPrevious</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!MusicPlayer.HasPrevious">Conditional</animation>
                     <posx>70</posx>
                     <posy>33</posy>
                     <width>35</width>
@@ -177,6 +179,8 @@
                     <onclick>PlayerControl(Forward)</onclick>
                 </control>
                 <control type="button" id="605">
+                    <enable>MusicPlayer.HasNext</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!MusicPlayer.HasNext">Conditional</animation>
                     <posx>410</posx>
                     <posy>33</posy>
                     <width>35</width>
