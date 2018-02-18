@@ -278,19 +278,19 @@
             <width>800</width>
             <height>100</height>
             <control type="image" description="MiniPlayer Background Image">
-                <posx>-15</posx>
-                <posy>-20</posy>
-                <width>755</width>
+                <posx>-100</posx>
+                <posy>-21</posy>
+                <width>785</width>
                 <height>125</height>
                 <aspectratio>stretch</aspectratio>
                 <texture>img/HomeMenuBar.png</texture>
             </control>
             <control type="image" description="MiniPlayer Background Image Focused">
                 <visible>ControlGroup(599).HasFocus(id)</visible>
-                <posx>-15</posx>
-                <posy>-6</posy>
-                <width>755</width>
-                <height>84</height>
+                <posx>-100</posx>
+                <posy>-4</posy>
+                <width>785</width>
+                <height>85</height>
                 <aspectratio>stretch</aspectratio>
                 <texture border="50,0,50,0">home/HomeBar.png</texture>
             </control>
@@ -341,7 +341,7 @@
             <!-- Mini Player Controls right under the player info -->
             <control type="group" description="Mini Player Controls" id="599">
                 <posx>100</posx>
-                <posy>35</posy>
+                <posy>42</posy>
                 <width>800</width>
                 <height>50</height>
                 <align>left</align>
@@ -350,15 +350,18 @@
                 <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
                 <!-- Else go back to the main nav bar on down -->
                 <ondown>9000</ondown>
-                <defaultcontrol>602</defaultcontrol>
+                <defaultcontrol>602</defaultcontrol><!-- User Stop or FullScreen -->
 
                 <!-- Start Main Video Playback Controls -->
+                <!-- Skip Back -->
                 <control type="button" id="600">
+                    <enable>Player.HasVideo | [Player.HasAudio + MusicPlayer.HasPrevious]</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="Player.HasAudio + !MusicPlayer.HasPrevious">Conditional</animation>
                     <posx>0</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/SkipBack.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/SkipBack.png</texturefocus>
+                    <width>22</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDSkipBack.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDSkipBack.png</texturefocus>
                     <onup>606</onup>
                     <onleft>599</onleft>
                     <onright>601</onright>
@@ -367,12 +370,15 @@
                     <ondown>9000</ondown>
                     <onclick>PlayerControl(Previous)</onclick>
                 </control>
+                <!-- Seek Back -->
                 <control type="button" id="601">
-                    <posx>50</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/Rewind.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/Rewind.png</texturefocus>
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
+                    <posx>40</posx>
+                    <width>32</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDRewind.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDRewind.png</texturefocus>
                     <onleft>600</onleft>
                     <onright>602</onright>
                     <onup>606</onup>
@@ -381,15 +387,18 @@
                     <ondown>9000</ondown>
                     <onclick>PlayerControl(Rewind)</onclick>
                 </control>
+                <!-- Play/Pause -->
                 <control type="togglebutton" id="602">
+                    <enable>Player.PauseEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.PauseEnabled">Conditional</animation>
                     <posx>90</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/Play.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/Play.png</texturefocus>
+                    <width>20</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDPlay.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDPlay.png</texturefocus>
                     <usealttexture>Player.Playing</usealttexture>
-                    <alttexturenofocus colordiffuse="Grey3">OSD/Pause.png</alttexturenofocus>
-                    <alttexturefocus colordiffuse="HL">OSD/Pause.png</alttexturefocus>
+                    <alttexturenofocus>OSDControls/OSDPause.png</alttexturenofocus>
+                    <alttexturefocus colordiffuse="HL">OSDControls/OSDPause.png</alttexturefocus>
                     <onleft>601</onleft>
                     <onright>603</onright>
                     <!-- Detect if there is focusable content in shelf and go there on down -->
@@ -398,34 +407,35 @@
                     <ondown>9000</ondown>
                     <onclick>PlayerControl(Play)</onclick>
                 </control>
+                <!-- Stop -->
                 <control type="button" id="603">
-                    <posx>120</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/Stop.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/Stop.png</texturefocus>
-                    <onup>606</onup>
+                    <posx>123</posx>
+                    <width>20</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDStop.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDStop.png</texturefocus>
                     <onleft>602</onleft>
                     <onright>604</onright>
                     <!-- Detect if there is focusable content in shelf and go there on down -->
                     <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
                     <!-- Else go back to the main nav bar on down -->
                     <ondown>9000</ondown>
-
                     <onclick>PlayerControl(Stop)</onclick>
                     <!-- Since we have stopped the player and the mini player will hide.
                     Detect if there is focusable content in shelf and focus there if so -->
                     <onclick condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">Control.SetFocus(700)</onclick>
                     <!-- Else send focus back to the main nav bar -->
                     <onclick condition="![Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)]">Control.SetFocus(9000)</onclick>
-
                 </control>
+                <!-- Seek Forward -->
                 <control type="button" id="604">
+                    <enable>Player.SeekEnabled</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
                     <posx>160</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/FastForward.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/FastForward.png</texturefocus>
+                    <width>32</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDFastForward.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDFastForward.png</texturefocus>
                     <onleft>603</onleft>
                     <onright>605</onright>
                     <onup>606</onup>
@@ -435,12 +445,15 @@
                     <ondown>9000</ondown>
                     <onclick>PlayerControl(Forward)</onclick>
                 </control>
+                <!-- Skip Forward -->
                 <control type="button" id="605">
-                    <posx>200</posx>
-                    <width>50</width>
-                    <height>35</height>
-                    <texturenofocus colordiffuse="Grey3">OSD/SkipForward.png</texturenofocus>
-                    <texturefocus colordiffuse="HL">OSD/SkipForward.png</texturefocus>
+                    <enable>Player.HasVideo | [Player.HasAudio + MusicPlayer.HasNext]</enable>
+                    <animation effect="fade" start="100" end="50" time="75" condition="Player.HasAudio + !MusicPlayer.HasNext">Conditional</animation>
+                    <posx>205</posx>
+                    <width>22</width>
+                    <height>20</height>
+                    <texturenofocus>OSDControls/OSDSkipForward.png</texturenofocus>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDSkipForward.png</texturefocus>
                     <onleft>604</onleft>
                     <onright>606</onright>
                     <onup>606</onup>
@@ -450,11 +463,14 @@
                     <ondown>9000</ondown>
                     <onclick>PlayerControl(Next)</onclick>
                 </control>
+
                 <control type="button" id="606">
-                    <posx>240</posx>
+                    <posx>230</posx>
                     <width>80</width>
-                    <height>35</height>
-                    <textcolor>Grey3</textcolor>
+                    <height>20</height>
+                    <align>left</align>
+                    <aligny>center</aligny>
+                    <textcolor>White</textcolor>
                     <font>size16</font>
                     <onfocus>-</onfocus>
                     <onunfocus>-</onunfocus>
@@ -463,8 +479,7 @@
                     <focusedcolor>HL</focusedcolor>
                     <label>FS</label>
                     <onleft>605</onleft>
-                    <onright>606</onright>
-                    <onup>606</onup>
+                    <onright>607</onright>
                     <!-- Detect if there is focusable content in shelf and go there on down -->
                     <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
                     <!-- Else go back to the main nav bar on down -->
@@ -472,10 +487,95 @@
                     <onclick condition="Player.HasVideo">ActivateWindow(fullscreenvideo)</onclick>
                     <onclick condition="Player.HasAudio">ActivateWindow(visualisation)</onclick>
                 </control>
+                <!-- Repeat -->
+                <control type="group" description="Repeat Control">
+                    <visible>Player.HasAudio</visible>
+                    <posx>295</posx>
+                    <!-- Actual repeat button is "invisible"-->
+                    <control type="button" id="607">
+                        <posx>0</posx>
+                        <width>38</width>
+                        <height>30</height>
+                        <label>-</label>
+                        <texturefocus>-</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <onclick>PlayerControl(Repeat)</onclick>
+                        <onleft>606</onleft>
+                        <onright>608</onright>
+                        <onup>609</onup>
+                        <!-- Detect if there is focusable content in shelf and go there on down -->
+                        <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
+                        <!-- Else go back to the main nav bar on down -->
+                        <ondown>9000</ondown>
+                    </control>
+                    <!-- Now we switch our repeat icons depending on the focus of 1 above and playlist state-->
+                    <control type="image">
+                        <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + !Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture>OSDControls/OSDRepeatOff.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>!Playlist.IsRepeat + !Playlist.IsRepeatOne + Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatOff.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeatOne + !Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture>OSDControls/OSDRepeatOne.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeatOne + Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatOne.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeat + !Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture>OSDControls/OSDRepeatAll.png</texture>
+                    </control>
+                    <control type="image">
+                        <visible>Playlist.IsRepeat + Control.HasFocus(607)</visible>
+                        <posx>0</posx>
+                        <width>25</width>
+                        <height>20</height>
+                        <texture colordiffuse="HL">OSDControls/OSDRepeatAll.png</texture>
+                    </control>
+                </control>
+                <!-- Random -->
+                <control type="togglebutton" id="608" description="Random">
+                    <visible>Player.HasAudio</visible>
+                    <posx>345</posx>
+                    <posy>0</posy>
+                    <width>28</width>
+                    <height>20</height>
+                    <texturefocus colordiffuse="HL">OSDControls/OSDRandomOff.png</texturefocus>
+                    <texturenofocus>OSDControls/OSDRandomOff.png</texturenofocus>
+                    <usealttexture>Playlist.IsRandom</usealttexture>
+                    <alttexturefocus colordiffuse="HL">OSDControls/OSDRandomOn.png</alttexturefocus>
+                    <alttexturenofocus>OSDControls/OSDRandomOn.png</alttexturenofocus>
+                    <onleft>607</onleft>
+                    <onright>609</onright>
+                    <!-- Detect if there is focusable content in shelf and go there on down -->
+                    <ondown condition="Control.IsVisible(311)|Control.IsVisible(312)|Control.IsVisible(313)|Control.IsVisible(314)|Control.IsVisible(315)">700</ondown>
+                    <!-- Else go back to the main nav bar on down -->
+                    <ondown>9000</ondown>
+                    <onclick>PlayerControl(Random)</onclick>
+                </control>
 
                 <control type="label" description="Time Label">
-                    <posx>340</posx>
-                    <height>40</height>
+                    <posx>425</posx>
+                    <height>20</height>
                     <width>400</width>
                     <label>$INFO[Player.Time,, / ]$INFO[Player.Duration]</label>
                     <align>left</align>
