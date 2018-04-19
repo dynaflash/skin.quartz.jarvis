@@ -134,16 +134,6 @@
                             <onclick>ActivateWindow(VideoLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
                         </item>
-                        <item id="10" description="Update library">
-                            <visible>Library.HasContent(Video)</visible>
-                            <label>653</label>
-                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">UpdateLibrary(Video)</onclick>
-                        </item>
-                        <item id="11" description="Clean library">
-                            <visible>Library.HasContent(Video)</visible>
-                            <label>32001</label>
-                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">CleanLibrary(Video)</onclick>
-                        </item>
                     </content>
                     <include>Animation301</include>
                 </control>
@@ -220,16 +210,6 @@
                             <label>137</label>
                             <onclick>ActivateWindow(VideoLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
-                        </item>
-                        <item id="10" description="Update library">
-                            <visible>Library.HasContent(Video)</visible>
-                            <label>653</label>
-                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">UpdateLibrary(Video)</onclick>
-                        </item>
-                        <item id="11" description="Clean library">
-                            <visible>Library.HasContent(Video)</visible>
-                            <label>32001</label>
-                            <onclick conditon="!Library.IsScanningVideo + Library.HasContent(Video)">CleanLibrary(Video)</onclick>
                         </item>
                     </content>
                     <include>Animation302</include>
@@ -334,16 +314,6 @@
                             <label>137</label>
                             <onclick>ActivateWindow(MusicLibrary)</onclick>
                             <onclick>SendClick(8)</onclick>
-                        </item>
-                        <item id="18" description="Update library">
-                            <visible>Library.HasContent(Music)</visible>
-                            <label>653</label>
-                            <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">UpdateLibrary(Music)</onclick>
-                        </item>
-                        <item id="19" description="Clean library">
-                            <visible>Library.HasContent(Video)</visible>
-                            <label>32001</label>
-                            <onclick conditon="!Library.IsScanningMusic + Library.HasContent(Music)">CleanLibrary(Music)</onclick>
                         </item>
                     </content>
                     <include>Animation303</include>
