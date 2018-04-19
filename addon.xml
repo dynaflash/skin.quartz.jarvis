@@ -1,4 +1,4 @@
-<addon id="skin.quartz.kinos" version="5.3.1-Jarvis-Kinos" name="Quartz 5" provider-name="Dynaflash">
+<addon id="skin.quartz.kinos" version="5.3.2-Jarvis-Kinos" name="Quartz 5" provider-name="Dynaflash">
   <requires>
     <import addon="xbmc.gui" version="5.10.0"/>
     <import addon="script.favourites" version="6.0.3"/>
